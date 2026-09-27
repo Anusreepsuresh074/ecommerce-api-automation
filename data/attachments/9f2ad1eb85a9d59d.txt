@@ -1,0 +1,4 @@
+2026-09-27 16:25:22,455 | INFO | src.core.api_base | POST https://dummyjson.com/auth/login | params=None | headers=None | json={'username': 'emilys', 'password': '***'}
+2026-09-27 16:25:22,574 | INFO | src.core.api_base | -> 400 {"message": "Invalid credentials"}
+2026-09-27 16:25:22,576 | INFO | src.core.api_base | POST https://dummyjson.com/auth/login | params=None | headers=None | json={}
+2026-09-27 16:25:22,694 | INFO | src.core.api_base | -> 400 {"message": "Username and password required"}
