@@ -1,0 +1,4 @@
+GET https://dummyjson.com/products
+params={'skip': 294}
+headers=None
+json=None

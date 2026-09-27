@@ -1,0 +1,4 @@
+GET https://dummyjson.com/products
+params={'sortBy': 'price', 'order': 'desc', 'limit': 0, 'select': 'price'}
+headers=None
+json=None

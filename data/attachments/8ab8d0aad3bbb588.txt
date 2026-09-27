@@ -1,0 +1,4 @@
+INFO     src.core.api_base:api_base.py:39 POST https://dummyjson.com/auth/login | params=None | headers=None | json={'username': 'emilys', 'password': '***'}
+INFO     src.core.api_base:api_base.py:45 -> 400 {"message": "Invalid credentials"}
+INFO     src.core.api_base:api_base.py:39 POST https://dummyjson.com/auth/login | params=None | headers=None | json={}
+INFO     src.core.api_base:api_base.py:45 -> 400 {"message": "Username and password required"}

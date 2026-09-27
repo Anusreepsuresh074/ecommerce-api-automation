@@ -1,0 +1,4 @@
+GET https://dummyjson.com/products
+params={'limit': '-5'}
+headers=None
+json=None

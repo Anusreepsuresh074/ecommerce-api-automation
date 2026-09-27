@@ -1,0 +1,2 @@
+status_code=200
+{"products": [{"id": 121, "title": "iPhone 5s", "description": "The iPhone 5s is a classic smartphone known for its compact design and advanced features during its release. While it's an older model, it still provides a reliable user experience.", "category": "smartphones", "price": 199.99, "discountPercentage": 12.91, "rating": 2.83, "stock": 25, "tags": ["smartphones", "apple"], "brand": "Apple", "sku": "SMA-APP-IPH-121", "weight": 2, "dimensions": {"width": 5.29, "height": 18.38, "depth": 17.
