@@ -1,0 +1,13 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"RULE-products-writes-simulated. Verifies: add returns the product with a new id.","181","Add echoes the product with a new id","tests.products","2026-09-27","passed","2026-09-27","TestAddProduct","test_005_add_product","",""
+"RULE-auth-refresh-issues-new-pair: new pair without username/password; token in body or cookie.
+        Verifies: a refresh token buys a working access token.","175","Refresh issues a working access token","tests.auth","2026-09-27","passed","2026-09-27","TestRefresh","test_003_refresh","",""
+"RULE-auth-bearer-required-on-auth-routes: /auth/* take Authorization: Bearer <token>.
+        Verifies: a valid token identifies its user.","104","Valid Bearer token returns the current user","tests.auth","2026-09-27","passed","2026-09-27","TestCurrentUser","test_002_current_user","",""
+"RULE-products-search-title-description. Verifies: every hit is relevant.","119","Every search hit matches the term","tests.products","2026-09-27","passed","2026-09-27","TestSearchProducts","test_003_search_products","",""
+"RULE-auth-login-returns-token-pair: login returns identity + access and refresh JWTs.
+        Verifies: valid credentials log the user in.","219","Valid credentials return a token pair","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
+"Endpoint inventory: GET /products/{id}. Verifies: a product can be fetched by id.","31","Get a product by id","tests.products","2026-09-27","passed","2026-09-27","TestGetProduct","test_002_get_product","",""
+"RULE-auth-bearer-required-on-auth-routes. Verifies: no token, no access.","105","Missing token is rejected with 401","tests.auth","2026-09-27","passed","2026-09-27","TestCurrentUser","test_002_current_user","",""
+"RULE-auth-bearer-required-on-auth-routes. Verifies: the /auth/ mirror of a public route is locked.","228","Protected product list requires a token","tests.products","2026-09-27","passed","2026-09-27","TestProtectedProductRoutes","test_007_protected_routes","",""
+"RULE-products-default-page-30. Verifies: defaults: first page of 30.","157","Default list is the first page of 30","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""

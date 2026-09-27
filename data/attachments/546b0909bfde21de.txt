@@ -1,0 +1,4 @@
+GET https://dummyjson.com/auth/products
+params=None
+headers=None
+json=None

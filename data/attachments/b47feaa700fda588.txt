@@ -1,0 +1,2 @@
+2026-09-27 16:17:04,497 | INFO | src.core.api_base | POST https://dummyjson.com/auth/login | params=None | headers=None | json={'username': 'emilys', 'password': '***'}
+2026-09-27 16:17:04,713 | INFO | src.core.api_base | -> 200 {"accessToken": "***", "refreshToken": "***", "id": 1, "username": "emilys", "email": "emily.johnson@x.dummyjson.com", "firstName": "Emily", "lastName": "Johnson", "gender": "female", "image": "https://dummyjson.com/icon/emilys/128"}
