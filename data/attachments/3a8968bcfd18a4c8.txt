@@ -1,2 +1,0 @@
-status_code=403
-{"message": "Invalid refresh token"}

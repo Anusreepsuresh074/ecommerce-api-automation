@@ -1,4 +1,0 @@
-PUT https://dummyjson.com/products/99999
-params=None
-headers=None
-json={'title': 'x'}

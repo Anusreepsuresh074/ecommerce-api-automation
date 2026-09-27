@@ -1,2 +1,0 @@
-INFO     src.core.api_base:api_base.py:39 GET https://dummyjson.com/products | params={'skip': -1} | headers=None | json=None
-INFO     src.core.api_base:api_base.py:45 -> 400 {"message": "Invalid 'skip' - should be a positive number"}

@@ -1,2 +1,0 @@
-status_code=200
-{"products": [{"id": 11, "title": "Annibale Colombo Bed", "description": "The Annibale Colombo Bed is a luxurious and elegant bed frame, crafted with high-quality materials for a comfortable and stylish bedroom.", "category": "furniture", "price": 1899.99, "discountPercentage": 8.57, "rating": 4.77, "stock": 88, "tags": ["furniture", "beds"], "brand": "Annibale Colombo", "sku": "FUR-ANN-ANN-011", "weight": 10, "dimensions": {"width": 28.16, "height": 25.36, "depth": 17.28}, "warrantyInformation"

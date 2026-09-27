@@ -1,2 +1,0 @@
-status_code=200
-[{"slug": "beauty", "name": "Beauty", "url": "https://dummyjson.com/products/category/beauty"}, {"slug": "fragrances", "name": "Fragrances", "url": "https://dummyjson.com/products/category/fragrances"}, {"slug": "furniture", "name": "Furniture", "url": "https://dummyjson.com/products/category/furniture"}, {"slug": "groceries", "name": "Groceries", "url": "https://dummyjson.com/products/category/groceries"}, {"slug": "home-decoration", "name": "Home Decoration", "url": "https://dummyjson.com/prod

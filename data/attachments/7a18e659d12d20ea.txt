@@ -1,2 +1,0 @@
-status_code=400
-{"message": "Invalid 'skip' - should be a positive number"}
