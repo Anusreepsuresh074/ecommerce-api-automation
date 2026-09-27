@@ -1,7 +1,7 @@
 # DummyJSON API Test Automation
 
-![CI](https://github.com/Anusreepsuresh074/dummyjson-api-automation/actions/workflows/ci.yml/badge.svg)
-**[Live test report](https://anusreepsuresh074.github.io/dummyjson-api-automation/)**
+![CI](https://github.com/Anusreepsuresh074/ecommerce-api-automation/actions/workflows/ci.yml/badge.svg)
+**[Live test report](https://anusreepsuresh074.github.io/ecommerce-api-automation/)**
 
 A Python + pytest API test automation suite for [DummyJSON](https://dummyjson.com), a public fake e-commerce API with a real **JWT Bearer auth** flow (login → access + refresh token → protected routes → expiry → refresh) and a 194-product catalog with pagination, field selection, sorting, date filtering, search and categories.
 
