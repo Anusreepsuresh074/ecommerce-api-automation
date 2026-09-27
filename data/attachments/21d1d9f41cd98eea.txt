@@ -1,0 +1,4 @@
+PUT https://dummyjson.com/auth/products/1
+params=None
+headers=None
+json={'title': 'QA Protected'}

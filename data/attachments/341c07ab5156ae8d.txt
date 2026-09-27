@@ -1,0 +1,2 @@
+INFO     src.core.api_base:api_base.py:39 GET https://dummyjson.com/auth/me | params=None | headers={'Authorization': '***'} | json=None
+INFO     src.core.api_base:api_base.py:45 -> 500 {"message": "invalid signature"}

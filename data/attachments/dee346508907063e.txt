@@ -1,0 +1,4 @@
+PATCH https://dummyjson.com/products/3
+params=None
+headers=None
+json={'price': 1.23}

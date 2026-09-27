@@ -1,0 +1,2 @@
+status_code=200
+{"id": 2, "title": "Eyeshadow Palette with Mirror", "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.", "category": "beauty", "price": 19.99, "discountPercentage": 18.19, "rating": 2.86, "stock": 34, "tags": ["beauty", "eyeshadow"], "brand": "Glamour Beauty", "sku": "BEA-GLA-EYE-002", "weight": 9, "dimensions": {"width": 9.26, "height": 22.47, "d

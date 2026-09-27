@@ -1,0 +1,4 @@
+GET https://dummyjson.com/products
+params={'limit': 0, 'select': 'meta', 'modifiedBefore': '2026-07-14T15:39:30.882Z'}
+headers=None
+json=None

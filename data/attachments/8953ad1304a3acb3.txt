@@ -1,0 +1,4 @@
+GET https://dummyjson.com/products/3
+params=None
+headers=None
+json=None
