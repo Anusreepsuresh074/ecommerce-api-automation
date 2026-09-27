@@ -64,7 +64,7 @@ jobs:
 
       # History for flaky-test-triage: a fresh runner has none, so restore the latest saved copy.
       - name: Restore run history
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: reports/history
           key: run-history-${{ matrix.scope }}-${{ github.run_id }}
@@ -97,7 +97,7 @@ jobs:
 
       - name: Save run history
         if: always()
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v6
         with:
           path: reports/history
           key: run-history-${{ matrix.scope }}-${{ github.run_id }}
