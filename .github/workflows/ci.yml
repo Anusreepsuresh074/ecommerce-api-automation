@@ -1,0 +1,179 @@
+name: CI
+
+# Built by ci-integration from create-framework-structure's minimal stub.
+#   Pull request / push to main -> lint, then the smoke subset against dev (the PR gate).
+#   Nightly 02:30 UTC / manual  -> lint, then the full regression suite against dev.
+# dev is the only environment in config/config.yaml. Failures are reported by GitHub itself (failed
+# check + email, JUnit summary, run-page summary) — no external notification channel.
+#
+# Requires two repository secrets (Settings -> Secrets and variables -> Actions):
+# AUTH_USERNAME and AUTH_PASSWORD — one of the test users DummyJSON publishes.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "30 2 * * *"  # 02:30 UTC daily
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  AUTH_USERNAME: ${{ secrets.AUTH_USERNAME }}
+  AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
+  # One flag set for every test job: parallel by file (loadscope keeps a file's tests on one
+  # worker), 2 reruns 5 s apart for transient failures only, JUnit XML beside the Allure results.
+  PYTEST_FLAGS: --env=dev -n auto --dist loadscope --reruns 2 --reruns-delay 5 --junitxml=reports/junit.xml
+  HISTORY_RUNS: 20
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check .
+      - run: ruff format --check .
+
+  tests:
+    name: ${{ matrix.scope == 'smoke' && 'Smoke suite (PR gate)' || 'Full regression suite' }}
+    needs: lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write  # publish the JUnit test summary
+    strategy:
+      matrix:
+        scope: ${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && fromJSON('["regression"]') || fromJSON('["smoke"]') }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      # History for flaky-test-triage: a fresh runner has none, so restore the latest saved copy.
+      - name: Restore run history
+        uses: actions/cache/restore@v4
+        with:
+          path: reports/history
+          key: run-history-${{ matrix.scope }}-${{ github.run_id }}
+          restore-keys: run-history-${{ matrix.scope }}-
+
+      - name: Run ${{ matrix.scope }} suite
+        run: pytest -m ${{ matrix.scope }} $PYTEST_FLAGS
+
+      - name: Archive this run's outcomes to history
+        if: always()
+        run: |
+          python - <<'EOF'
+          import json, os, pathlib, xml.etree.ElementTree as ET
+          history = pathlib.Path("reports/history"); history.mkdir(parents=True, exist_ok=True)
+          junit = pathlib.Path("reports/junit.xml")
+          if junit.exists():
+              outcomes = {}
+              for case in ET.parse(junit).getroot().iter("testcase"):
+                  status = "passed"
+                  for tag in ("failure", "error", "skipped"):
+                      if case.find(tag) is not None:
+                          status = {"failure": "failed", "error": "error", "skipped": "skipped"}[tag]
+                  outcomes[f"{case.get('classname')}::{case.get('name')}"] = status
+              run = f"{os.environ['GITHUB_RUN_ID']}-{os.environ['GITHUB_RUN_ATTEMPT']}"
+              (history / f"{run}.json").write_text(json.dumps({"run": run, "sha": os.environ["GITHUB_SHA"], "outcomes": outcomes}))
+          runs = sorted(history.glob("*.json"), key=lambda p: p.stat().st_mtime)
+          for old in runs[: -int(os.environ["HISTORY_RUNS"])]:
+              old.unlink()
+          EOF
+
+      - name: Save run history
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: reports/history
+          key: run-history-${{ matrix.scope }}-${{ github.run_id }}
+
+      - name: Test summary
+        if: always()
+        uses: mikepenz/action-junit-report@v6
+        with:
+          report_paths: reports/junit.xml
+          check_name: Test results (${{ matrix.scope }})
+          detailed_summary: true
+          include_passed: false
+
+      # Failure notification: GitHub already marks the check red and emails on failure; this adds
+      # counts plus the breaking schema-validation findings to the run page.
+      - name: Failure summary
+        if: failure()
+        run: |
+          python - <<'EOF' >> "$GITHUB_STEP_SUMMARY"
+          import pathlib, xml.etree.ElementTree as ET
+          print("## ❌ ${{ matrix.scope }} run failed")
+          junit = pathlib.Path("reports/junit.xml")
+          if junit.exists():
+              root = ET.parse(junit).getroot()
+              suite = root.find("testsuite") if root.tag == "testsuites" else root
+              print(f"tests {suite.get('tests')} · failures {suite.get('failures')} · errors {suite.get('errors')} · skipped/xfail {suite.get('skipped')}")
+              for case in root.iter("testcase"):
+                  if case.find("failure") is not None or case.find("error") is not None:
+                      print(f"- `{case.get('classname')}::{case.get('name')}`")
+          report = pathlib.Path("context/schema-validation-report.md")
+          if report.exists():
+              breaking = [l for l in report.read_text().splitlines() if l.startswith("| ") and "breaking" in l and "non-breaking" not in l and "| Pass |" not in l]
+              print(f"\n**Breaking schema-validation findings on record:** {len(breaking)} (see context/schema-validation-report.md)")
+          EOF
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: reports-${{ matrix.scope }}
+          path: |
+            reports/allure-results/
+            reports/junit.xml
+          retention-days: 14
+
+  # Builds the Allure report with run-over-run trend history and publishes it to GitHub Pages
+  # (gh-pages branch). Skipped for pull requests.
+  # One-time repo setup: Settings -> Pages -> Deploy from branch -> gh-pages.
+  allure-report:
+    needs: tests
+    if: always() && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download results
+        uses: actions/download-artifact@v8
+        with:
+          pattern: reports-*
+          path: reports
+          merge-multiple: true
+
+      - name: Fetch previous report (for history)
+        uses: actions/checkout@v7
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Generate Allure report
+        run: |
+          if [ -d gh-pages/history ]; then cp -r gh-pages/history reports/allure-results/; fi
+          npm install -g allure-commandline
+          allure generate reports/allure-results --clean -o allure-report
+
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-report

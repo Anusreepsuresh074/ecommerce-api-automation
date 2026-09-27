@@ -1,0 +1,4 @@
+# DummyJSON is a single public service — dev is the only real environment.
+dev:
+  base_url: "https://dummyjson.com"
+  timeout: 30

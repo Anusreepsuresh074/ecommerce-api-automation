@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Virtual environment
+.venv/
+
+# Local environment (credentials)
+.env
+
+# Allure / pytest report output
+reports/
+
+# Claude Code local config. The canonical copies are committed instead: skills/ holds the
+# distributable suite and agents/ the reusable template. .claude/ is only this project's own
+# installed mirror plus its filled-in agent config, so it stays local.
+.claude/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
