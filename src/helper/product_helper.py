@@ -31,6 +31,11 @@ class ProductHelper:
     def __init__(self, api_base):
         self.api_base = api_base
 
+    @staticmethod
+    def product_ids(response) -> list[int]:
+        """The ids on a product-list page, in response order."""
+        return [product["id"] for product in response.json()["products"]]
+
     @step("List products")
     def list_products(self, params=None, status_code: int = 200, message=None):
         response = self.api_base.get(PRODUCTS, params=params)
@@ -79,12 +84,16 @@ class ProductHelper:
 
     @step("{method} product {product_id}")
     def update_product(self, product_id, payload: dict, method: str = "PUT", status_code: int = 200, message=None):
+        if method not in ("PUT", "PATCH"):
+            raise ValueError(f"update_product supports PUT or PATCH, got {method!r}")
         path = PRODUCT_BY_ID.format(product_id=product_id)
         response = self.api_base.put(path, json=payload) if method == "PUT" else self.api_base.patch(path, json=payload)
         return AssertHelper.assert_response(response, status_code, WRITTEN_PRODUCT_SCHEMA, message)
 
     @step("{method} product {product_id} via the Bearer-protected route")
     def write_product_authenticated(self, product_id, method: str, headers, payload=None, status_code: int = 200):
+        if method not in ("PUT", "DELETE"):
+            raise ValueError(f"write_product_authenticated supports PUT or DELETE, got {method!r}")
         path = AUTH_PRODUCT_BY_ID.format(product_id=product_id)
         if method == "DELETE":
             return AssertHelper.assert_response(

@@ -9,10 +9,6 @@ from tests.products.products_td import ProductsTestData
 pytestmark = [pytest.mark.products, pytest.mark.regression]
 
 
-def _ids(response) -> list[int]:
-    return [product["id"] for product in response.json()["products"]]
-
-
 @allure.feature("Products")
 @allure.story("List: pagination, select, sort, date filter, delay")
 class TestListProducts:
@@ -38,14 +34,16 @@ class TestListProducts:
     @allure.title("limit and skip select the right window")
     def test_limit_and_skip_select_the_right_window(self, product_helper):
         """RULE-products-limit-skip-paginate. Verifies: skip/limit pick the exact window."""
-        AssertHelper.assert_equals(_ids(product_helper.list_products({"limit": 5, "skip": 10})), [11, 12, 13, 14, 15])
+        AssertHelper.assert_equals(
+            product_helper.product_ids(product_helper.list_products({"limit": 5, "skip": 10})), [11, 12, 13, 14, 15]
+        )
 
     # case: TC-get-products-happy-pages-do-not-overlap
     @allure.title("Consecutive pages do not overlap")
     def test_consecutive_pages_do_not_overlap(self, product_helper):
         """RULE-products-limit-skip-paginate. Verifies: page 2 continues where page 1 ended."""
-        page1 = _ids(product_helper.list_products({"limit": 10, "skip": 0}))
-        page2 = _ids(product_helper.list_products({"limit": 10, "skip": 10}))
+        page1 = product_helper.product_ids(product_helper.list_products({"limit": 10, "skip": 0}))
+        page2 = product_helper.product_ids(product_helper.list_products({"limit": 10, "skip": 10}))
         AssertHelper.assert_equals(set(page1) & set(page2), set(), "ids on both pages ")
         AssertHelper.assert_equals(page2[0], page1[-1] + 1, "first id of page 2 ")
 
@@ -116,7 +114,8 @@ class TestListProducts:
         """RULE-products-sort-by-order (observed live: unknown sortBy ignored).
         Verifies: pins the observed fallback for an unknown field."""
         AssertHelper.assert_equals(
-            _ids(product_helper.list_products({"sortBy": "nosuchfield", "limit": 5})), [1, 2, 3, 4, 5]
+            product_helper.product_ids(product_helper.list_products({"sortBy": "nosuchfield", "limit": 5})),
+            [1, 2, 3, 4, 5],
         )
 
     # case: TC-get-products-happy-modified-date-filter
@@ -140,7 +139,7 @@ class TestListProducts:
             and (not use_before or parse_iso(product["meta"]["updatedAt"]) < parse_iso(before))
         ]
         AssertHelper.assert_equals(
-            sorted(_ids(product_helper.list_products(params))), sorted(expected), "filtered ids "
+            sorted(product_helper.product_ids(product_helper.list_products(params))), sorted(expected), "filtered ids "
         )
 
     # case: TC-get-products-negative-invalid-modified-date

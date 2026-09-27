@@ -6,10 +6,6 @@ from src.core.assert_helper import AssertHelper
 pytestmark = [pytest.mark.products, pytest.mark.regression]
 
 
-def _ids(response) -> list[int]:
-    return [product["id"] for product in response.json()["products"]]
-
-
 @allure.feature("Products")
 @allure.story("Search")
 class TestSearchProducts:
@@ -28,8 +24,8 @@ class TestSearchProducts:
     @allure.title("Search ignores case")
     def test_search_is_case_insensitive(self, product_helper):
         """RULE-products-search-title-description. Verifies: case doesn't matter."""
-        lower = _ids(product_helper.search_products("phone", {"limit": 0}))
-        upper = _ids(product_helper.search_products("PHONE", {"limit": 0}))
+        lower = product_helper.product_ids(product_helper.search_products("phone", {"limit": 0}))
+        upper = product_helper.product_ids(product_helper.search_products("PHONE", {"limit": 0}))
         AssertHelper.assert_equals(upper, lower, "ids for PHONE vs phone ")
 
     # case: TC-get-products-search-negative-no-match-empty
@@ -53,6 +49,6 @@ class TestSearchProducts:
     def test_search_results_can_be_paginated(self, product_helper):
         """RULE-products-search-title-description + RULE-products-limit-skip-paginate.
         Verifies: search results page like the list."""
-        full = _ids(product_helper.search_products("phone", {"limit": 0}))
-        page = _ids(product_helper.search_products("phone", {"limit": 5, "skip": 5}))
+        full = product_helper.product_ids(product_helper.search_products("phone", {"limit": 0}))
+        page = product_helper.product_ids(product_helper.search_products("phone", {"limit": 5, "skip": 5}))
         AssertHelper.assert_equals(page, full[5:10], "second page of results ")

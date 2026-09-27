@@ -16,9 +16,10 @@ class AssertHelper:
 
     @staticmethod
     def assert_response(response, status_code: int, success_schema: dict, message: str | None = None):
-        """The standard check every helper runs: the status first, then the success schema on a 2xx
-        or the standard error schema (and, if given, the exact error message) otherwise."""
+        """The standard check every helper runs: the status, a JSON content type, then the success
+        schema on a 2xx or the standard error schema (and, if given, the exact message) otherwise."""
         AssertHelper.assert_status_code(response, status_code)
+        AssertHelper.assert_content_type(response, "application/json")
         body = response.json()
         if 200 <= status_code < 300:
             AssertHelper.assert_schema(body, success_schema)
@@ -32,12 +33,6 @@ class AssertHelper:
     def assert_status_code(response, expected: int):
         assert response.status_code == expected, (
             f"Expected status {expected}, got {response.status_code}. Body: {safe_body(response)}"
-        )
-
-    @staticmethod
-    def assert_status_code_in(response, expected_codes):
-        assert response.status_code in expected_codes, (
-            f"Expected status in {expected_codes}, got {response.status_code}. Body: {safe_body(response)}"
         )
 
     @staticmethod
@@ -56,10 +51,6 @@ class AssertHelper:
         assert actual != unexpected, f"Expected {context}to differ from {unexpected!r}, both were {actual!r}"
 
     @staticmethod
-    def assert_true(condition: bool, message: str):
-        assert condition, message
-
-    @staticmethod
     def assert_is_instance(value, expected_type, context: str = ""):
         assert isinstance(value, expected_type), (
             f"Expected {context}to be of type {expected_type.__name__}, got {type(value).__name__} ({value!r})"
@@ -71,10 +62,6 @@ class AssertHelper:
         assert actual == expected, f"Expected {path}{field}={expected!r}, got {actual!r}. Full body: {redact(body)}"
 
     @staticmethod
-    def assert_field_present(body: dict, field: str, path: str = ""):
-        assert field in body, f"Expected field {path}{field} to be present. Full body: {redact(body)}"
-
-    @staticmethod
     def assert_field_absent(body: dict, field: str, path: str = ""):
         # The value is never echoed: this check exists to catch leaked secrets and personal data.
         assert field not in body, f"Expected field {path}{field} to be absent, but it is present (value withheld)"
@@ -82,10 +69,6 @@ class AssertHelper:
     @staticmethod
     def assert_contains(haystack, needle, context: str = ""):
         assert needle in haystack, f"Expected {context}to contain {needle!r}, got {haystack!r}"
-
-    @staticmethod
-    def assert_not_contains(haystack, needle, context: str = ""):
-        assert needle not in haystack, f"Expected {context}not to contain {needle!r}, got {haystack!r}"
 
     @staticmethod
     def assert_greater(actual, threshold, context: str = ""):

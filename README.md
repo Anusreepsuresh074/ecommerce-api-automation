@@ -5,7 +5,7 @@
 
 A Python + pytest API test automation suite for [DummyJSON](https://dummyjson.com), a public fake e-commerce API with a real **JWT Bearer auth** flow (login → access + refresh token → protected routes → expiry → refresh) and a 194-product catalog with pagination, field selection, sorting, date filtering, search and categories.
 
-**91 tests from 75 reviewed test cases.** They cover the full token lifecycle and the products resource across happy, negative, boundary, auth/authz, contract/schema and error-shape cases, each traced to a business rule. Every response is validated against a strict JSON Schema, down to every nested review of every product. Results are reported through [Allure](https://allurereport.org/).
+**91 tests from 75 reviewed test cases.** They cover the full token lifecycle and the products resource across happy, negative, boundary, auth/authz, contract/schema and error-shape cases, each traced to a business rule. Every response is checked for status, JSON content type and its JSON Schema (strict wherever the docs define the full shape), down to every nested review of every product. Results are reported through [Allure](https://allurereport.org/).
 
 ```
 77 passed, 14 xfailed in ~80s (parallel, -n auto)  →  https://dummyjson.com (live)
@@ -115,7 +115,7 @@ allure open reports/allure-report
 `.github/workflows/ci.yml`:
 
 - **Lint** (ruff check + format) gates every run.
-- **Smoke suite** on every push and PR; **full regression suite** nightly at 02:30 UTC and on demand. Both run in parallel by file, with 2 reruns 5 s apart for transient network failures only.
+- **Smoke suite** on every push and PR; **full regression suite** nightly at 02:30 UTC and on demand. Both run in parallel by file, with 2 reruns 5 s apart for network errors only (assertion failures are never retried).
 - **JUnit test summary** on each run page, and a failure summary with the breaking schema findings.
 - **Run history** (last 20 runs, via `actions/cache`) so flaky tests can be detected across runs.
 - **Allure report** with trend history, published to GitHub Pages after every non-PR run.

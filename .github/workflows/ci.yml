@@ -25,8 +25,9 @@ env:
   AUTH_USERNAME: ${{ secrets.AUTH_USERNAME }}
   AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
   # One flag set for every test job: parallel by file (loadscope keeps a file's tests on one
-  # worker), 2 reruns 5 s apart for transient failures only, JUnit XML beside the Allure results.
-  PYTEST_FLAGS: --env=dev -n auto --dist loadscope --reruns 2 --reruns-delay 5 --junitxml=reports/junit.xml
+  # worker), 2 reruns 5 s apart for transient network failures only (--only-rerun: an assertion
+  # failure is never retried, so a flaky test can't hide), JUnit XML beside the Allure results.
+  PYTEST_FLAGS: --env=dev -n auto --dist loadscope --reruns 2 --reruns-delay 5 --only-rerun ConnectionError --only-rerun Timeout --junitxml=reports/junit.xml
   HISTORY_RUNS: 20
 
 jobs:
