@@ -1,0 +1,2 @@
+status_code=201
+{"id": 195, "title": "QA Test Product eb31096f", "price": 49.99, "stock": 10, "description": "Created by an automated API test.", "brand": "QA Brand", "category": "smartphones"}

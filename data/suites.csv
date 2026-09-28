@@ -1,119 +1,119 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"RULE-products-modified-date-filter. Verifies: a bad date is rejected with a reason.","48","Invalid modifiedAfter date is rejected with 400","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"Endpoint inventory: list item and detail record are identical (observed live).
-        Verifies: both routes return the same record.","126","List and detail return the same record","tests.products","2026-09-27","passed","2026-09-27","TestGetProduct","test_002_get_product","",""
-"RULE-auth-expiry-configurable. Verifies: one over the max is a client error.","53","Lifetime above the maximum is rejected with 400","tests.auth","2026-09-27","skipped","2026-09-27","TestLogin","test_001_login","",""
-"RULE-products-writes-simulated. Verifies: add returns the product with a new id.","106","Add echoes the product with a new id","tests.products","2026-09-27","passed","2026-09-27","TestAddProduct","test_005_add_product","",""
-"RULE-products-search-title-description (observed live: empty q → all).
-        Verifies: pins the observed empty-q behaviour.","140","Empty query returns the whole catalog","tests.products","2026-09-27","passed","2026-09-27","TestSearchProducts","test_003_search_products","",""
-"RULE-products-sort-by-order. Verifies: sorting covers the whole result.","67","Products sort by price","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-auth-refresh-token-required. Verifies: the refresh token is required.","46","Missing refresh token is rejected with 401","tests.auth","2026-09-27","passed","2026-09-27","TestRefresh","test_003_refresh","",""
-"RULE-products-modified-date-filter + RULE-products-category-filter.
-        Verifies: filters combine as documented.","129","Category filter combines with the date filter","tests.products","2026-09-27","passed","2026-09-27","TestCategories","test_004_categories","",""
-"RULE-auth-expiry-configurable: expiresInMins optional, default 60, max 43200.
-        Verifies: no expiresInMins gives the documented default.","53","Token lifetime defaults to 60 minutes","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"RULE-products-unknown-id-not-found. Verifies: writes to missing products fail clearly.","50","Writes to an unknown product return 404","tests.products","2026-09-27","passed","2026-09-27","TestUpdateDeleteProduct","test_006_update_delete_product","",""
-"RULE-products-modified-date-filter. Verifies: the date filter keeps exactly the products in range.","146","modifiedAfter / modifiedBefore keep exactly the products in range","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-auth-login-returns-token-pair. Verifies: the login body has exactly the documented fields.","50","Login response matches LoginResponse exactly","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"RULE-products-search-title-description. Verifies: case doesn't matter.","160","Search ignores case","tests.products","2026-09-27","passed","2026-09-27","TestSearchProducts","test_003_search_products","",""
-"RULE-products-modified-date-filter. Verifies: the date filter keeps exactly the products in range.","145","modifiedAfter / modifiedBefore keep exactly the products in range","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-auth-bearer-required-on-auth-routes. Verifies: protected update/delete are locked.","193","Protected update and delete require a token","tests.products","2026-09-27","passed","2026-09-27","TestProtectedProductRoutes","test_007_protected_routes","",""
-"RULE-products-add-validates-body (inferred). Verifies: a product needs content.","47","Empty body is rejected","tests.products","2026-09-27","skipped","2026-09-27","TestAddProduct","test_005_add_product","",""
-"RULE-products-delay-max-5000. Verifies: the documented delay range is enforced.","5059","delay is limited to 5000 ms","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-products-category-filter. Verifies: the filter is exact.","71","Category filter returns only that category","tests.products","2026-09-27","passed","2026-09-27","TestCategories","test_004_categories","",""
-"RULE-products-limit-skip-paginate. Verifies: limit=0 means no limit.","190","limit=0 returns every product","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"Endpoint inventory: every error body is exactly {""message"": <string>}.
-        Verifies: auth errors use the standard {message} body.","42","Protected-route errors use the standard error body","tests.auth","2026-09-27","passed","2026-09-27","TestCurrentUser","test_002_current_user","",""
-"RULE-products-search-title-description. Verifies: no match is an empty result, not an error.","65","No match returns an empty result","tests.products","2026-09-27","passed","2026-09-27","TestSearchProducts","test_003_search_products","",""
-"Endpoint inventory: CurrentUser (identity fields + other user fields).
-        Verifies: identity fields a client relies on are present and typed.","50","Current user matches CurrentUser","tests.auth","2026-09-27","passed","2026-09-27","TestCurrentUser","test_002_current_user","",""
-"RULE-auth-login-requires-credentials: missing username/password → 400.
-        Verifies: required fields are enforced.","47","Username and password are both required","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"RULE-products-writes-simulated (docs: returns isDeleted & deletedOn; ""will not delete it"").
-        Verifies: delete returns the marker; the product still exists.","192","DELETE returns the deleted marker; the product still exists","tests.products","2026-09-27","passed","2026-09-27","TestUpdateDeleteProduct","test_006_update_delete_product","",""
-"RULE-auth-bearer-required-on-auth-routes. Verifies: no token, no access.","41","Missing token is rejected with 401","tests.auth","2026-09-27","passed","2026-09-27","TestCurrentUser","test_002_current_user","",""
-"RULE-products-update-response-shape (inferred). Verifies: update and read return the same shape.","187","Update response has the same shape as GET","tests.products","2026-09-27","skipped","2026-09-27","TestUpdateDeleteProduct","test_006_update_delete_product","",""
-"RULE-auth-bearer-required-on-auth-routes: /auth/* take Authorization: Bearer <token>.
-        Verifies: a valid token identifies its user.","67","Valid Bearer token returns the current user","tests.auth","2026-09-27","passed","2026-09-27","TestCurrentUser","test_002_current_user","",""
-"RULE-products-limit-skip-paginate. Verifies: paging past the end is safe.","116","Skipping past the end returns an empty page","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-auth-expired-token-rejected + RULE-auth-refresh-issues-new-pair.
-        Verifies: the full lifecycle — works → expires → refresh recovers.","64987","Expired token is rejected, then refresh recovers","tests.auth","2026-09-27","passed","2026-09-27","TestCurrentUser","test_002_current_user","",""
-"RULE-products-categories-lists-agree. Verifies: the two category routes list the same categories.","101","The two category routes agree","tests.products","2026-09-27","passed","2026-09-27","TestCategories","test_004_categories","",""
-"Endpoint inventory: every error body is exactly {""message"": <string>}.
-        Verifies: every login error is the standard {message} body.","112","Login errors use the standard error body","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"RULE-auth-invalid-token-rejected (inferred). Verifies: a forged signature is refused.","42","Forged signature is rejected with 401","tests.auth","2026-09-27","skipped","2026-09-27","TestCurrentUser","test_002_current_user","",""
-"RULE-auth-bearer-required-on-auth-routes. Verifies: the protected write route is locked.","158","Protected add requires a token","tests.products","2026-09-27","passed","2026-09-27","TestProtectedProductRoutes","test_007_protected_routes","",""
-"RULE-products-unknown-id-not-found. Verifies: unknown ids fail with a useful message.","50","Unknown product id returns 404 with a reason","tests.products","2026-09-27","passed","2026-09-27","TestGetProduct","test_002_get_product","",""
-"Endpoint inventory: GET /products/{id}. Verifies: a product can be fetched by id.","37","Get a product by id","tests.products","2026-09-27","passed","2026-09-27","TestGetProduct","test_002_get_product","",""
-"RULE-products-limit-skip-paginate. Verifies: skip/limit pick the exact window.","65","limit and skip select the right window","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-products-sort-by-order. Verifies: sorting covers the whole result.","77","Products sort by price","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-products-select-fields: comma-separated or repeated select; id always included.
-        Verifies: field selection trims the payload.","59","select returns only the requested fields","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-products-unknown-id-not-found. Verifies: unknown ids fail with a useful message.","50","Unknown product id returns 404 with a reason","tests.products","2026-09-27","passed","2026-09-27","TestGetProduct","test_002_get_product","",""
-"RULE-auth-invalid-token-rejected (inferred). Verifies: garbage is refused cleanly.","42","Malformed token is rejected with 401","tests.auth","2026-09-27","skipped","2026-09-27","TestCurrentUser","test_002_current_user","",""
-"RULE-auth-bad-credentials-generic-error: wrong password and unknown user both return 400
-        ""Invalid credentials"". Verifies: no login, and no hint which usernames exist.","49","Bad credentials are rejected without saying which","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"RULE-products-unknown-id-not-found. Verifies: writes to missing products fail clearly.","48","Writes to an unknown product return 404","tests.products","2026-09-27","passed","2026-09-27","TestUpdateDeleteProduct","test_006_update_delete_product","",""
-"RULE-auth-invalid-token-rejected (inferred). Verifies: the documented header format is enforced.","41","Token without the Bearer prefix is rejected","tests.auth","2026-09-27","skipped","2026-09-27","TestCurrentUser","test_002_current_user","",""
-"RULE-products-sort-by-order. Verifies: bad sort input is rejected with a reason.","45","Invalid sort order is rejected with 400","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
+"RULE-products-delay-max-5000. Verifies: the documented delay range is enforced.","131","delay is limited to 5000 ms","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
 "RULE-products-sort-by-order (observed live: unknown sortBy ignored).
-        Verifies: pins the observed fallback for an unknown field.","66","Unknown sort field is ignored","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-auth-expiry-configurable. Verifies: the requested lifetime is honoured at both ends.","51","Token lifetime follows expiresInMins","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"RULE-auth-bearer-required-on-auth-routes. Verifies: the /auth/ mirror of a public route is locked.","114","Protected product list requires a token","tests.products","2026-09-27","passed","2026-09-27","TestProtectedProductRoutes","test_007_protected_routes","",""
-"RULE-auth-refresh-token-required: invalid → 403, missing → 401. Verifies: a bad refresh token is refused.","48","Invalid refresh token is rejected with 403","tests.auth","2026-09-27","passed","2026-09-27","TestRefresh","test_003_refresh","",""
-"RULE-auth-login-requires-credentials: missing username/password → 400.
-        Verifies: required fields are enforced.","50","Username and password are both required","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"Endpoint inventory: every error body is exactly {""message"": <string>}.
-        Verifies: refresh errors use the standard body.","99","Refresh errors use the standard error body","tests.auth","2026-09-27","passed","2026-09-27","TestRefresh","test_003_refresh","",""
-"RULE-auth-expiry-configurable. Verifies: the requested lifetime is honoured at both ends.","53","Token lifetime follows expiresInMins","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"RULE-auth-refresh-issues-new-pair. Verifies: the cookie path works (docs).","50","Refresh accepts the refreshToken cookie","tests.auth","2026-09-27","passed","2026-09-27","TestRefresh","test_003_refresh","",""
-"RULE-products-invalid-paging-rejected. Verifies: bad skip input is rejected with a reason.","47","Negative skip is rejected with 400","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-auth-login-sets-token-cookies: tokens are returned in the body and set as cookies.
-        Verifies: browser clients get the tokens as cookies.","50","Login sets both token cookies","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"RULE-products-search-title-description. Verifies: every hit is relevant.","74","Every search hit matches the term","tests.products","2026-09-27","passed","2026-09-27","TestSearchProducts","test_003_search_products","",""
-"RULE-auth-expiry-configurable (observed live: 0 → 30 days). Verifies: pins the observed meaning of 0.","52","expiresInMins 0 gives a 30-day token","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"Endpoint inventory: ProductList / Product (21 required fields, brand optional, no extras).
-        Verifies: every item on a page is a valid Product.","228","Every product in the catalog matches Product","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-products-modified-date-filter. Verifies: the date filter keeps exactly the products in range.","144","modifiedAfter / modifiedBefore keep exactly the products in range","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-auth-token-types-not-interchangeable (inferred). Verifies: tokens can't be swapped (other direction).","49","Access token cannot be used as a refresh token","tests.auth","2026-09-27","skipped","2026-09-27","TestRefresh","test_003_refresh","",""
-"RULE-auth-cookie-token-accepted. Verifies: the cookie path works like the header.","54","Access token is accepted as a cookie","tests.auth","2026-09-27","passed","2026-09-27","TestCurrentUser","test_002_current_user","",""
-"RULE-products-add-validates-body (inferred). Verifies: field types are validated.","47","Wrong price type is rejected","tests.products","2026-09-27","skipped","2026-09-27","TestAddProduct","test_005_add_product","",""
-"RULE-products-writes-simulated. Verifies: read-your-write: the change is returned but not saved.","181","PATCH returns the change but does not persist it","tests.products","2026-09-27","passed","2026-09-27","TestUpdateDeleteProduct","test_006_update_delete_product","",""
-"RULE-products-select-fields: comma-separated or repeated select; id always included.
-        Verifies: field selection trims the payload.","58","select returns only the requested fields","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"Endpoint inventory: every error body is exactly {""message"": <string>}.
-        Verifies: validation errors use the standard body.","183","List validation errors use the standard error body","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-products-search-title-description + RULE-products-limit-skip-paginate.
-        Verifies: search results page like the list.","139","Search results can be paginated","tests.products","2026-09-27","passed","2026-09-27","TestSearchProducts","test_003_search_products","",""
-"RULE-auth-expiry-configurable (docs: refresh expiresInMins applies to the access token).
-        Verifies: the new access token gets the requested lifetime.","50","Refresh honours expiresInMins for the new access token","tests.auth","2026-09-27","passed","2026-09-27","TestRefresh","test_003_refresh","",""
-"RULE-products-unknown-id-not-found. Verifies: writes to missing products fail clearly.","50","Writes to an unknown product return 404","tests.products","2026-09-27","passed","2026-09-27","TestUpdateDeleteProduct","test_006_update_delete_product","",""
-"RULE-products-writes-simulated. Verifies: the change is applied, other fields kept.","176","PUT applies the change and keeps other fields","tests.products","2026-09-27","passed","2026-09-27","TestUpdateDeleteProduct","test_006_update_delete_product","",""
-"RULE-products-delay-max-5000. Verifies: the documented delay range is enforced.","50","delay is limited to 5000 ms","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-auth-me-hides-sensitive-fields (inferred). Verifies: no secrets in the identity response.","43","Current user response hides sensitive data","tests.auth","2026-09-27","skipped","2026-09-27","TestCurrentUser","test_002_current_user","",""
-"RULE-products-default-page-30. Verifies: defaults: first page of 30.","230","Default list is the first page of 30","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-auth-login-requires-credentials: missing username/password → 400.
-        Verifies: required fields are enforced.","48","Username and password are both required","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"RULE-products-update-response-shape (inferred). Verifies: update and read return the same shape.","185","Update response has the same shape as GET","tests.products","2026-09-27","skipped","2026-09-27","TestUpdateDeleteProduct","test_006_update_delete_product","",""
-"RULE-products-writes-simulated. Verifies: read-your-write: the documented simulation.","109","An added product is not persisted","tests.products","2026-09-27","passed","2026-09-27","TestAddProduct","test_005_add_product","",""
-"RULE-auth-token-types-not-interchangeable (inferred). Verifies: tokens can't be swapped.","41","Refresh token cannot be used as an access token","tests.auth","2026-09-27","skipped","2026-09-27","TestCurrentUser","test_002_current_user","",""
-"RULE-auth-login-returns-token-pair. Verifies: the token itself names the logged-in user.","53","Access token claims identify the user","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"Endpoint inventory: every error body is exactly {""message"": <string>}.
-        Verifies: 404 uses the standard body.","51","404 uses the standard error body","tests.products","2026-09-27","passed","2026-09-27","TestGetProduct","test_002_get_product","",""
-"RULE-auth-bad-credentials-generic-error: wrong password and unknown user both return 400
-        ""Invalid credentials"". Verifies: no login, and no hint which usernames exist.","50","Bad credentials are rejected without saying which","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"RULE-products-invalid-paging-rejected. Verifies: bad paging input is rejected with a reason.","51","Invalid limit is rejected with 400","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
+        Verifies: pins the observed fallback for an unknown field.","146","Unknown sort field is ignored","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-auth-bearer-required-on-auth-routes: /auth/* take Authorization: Bearer <token>.
+        Verifies: a valid token identifies its user.","133","Valid Bearer token returns the current user","tests.auth","2026-09-28","passed","2026-09-28","TestCurrentUser","test_002_current_user","",""
+"RULE-products-sort-by-order. Verifies: sorting covers the whole result.","149","Products sort by price","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-auth-expired-token-rejected + RULE-auth-refresh-issues-new-pair.
+        Verifies: the full lifecycle — works → expires → refresh recovers.","65133","Expired token is rejected, then refresh recovers","tests.auth","2026-09-28","passed","2026-09-28","TestCurrentUser","test_002_current_user","",""
 "RULE-auth-refresh-issues-new-pair: new pair without username/password; token in body or cookie.
-        Verifies: a refresh token buys a working access token.","114","Refresh issues a working access token","tests.auth","2026-09-27","passed","2026-09-27","TestRefresh","test_003_refresh","",""
-"RULE-products-unknown-id-not-found. Verifies: unknown ids fail with a useful message.","50","Unknown product id returns 404 with a reason","tests.products","2026-09-27","passed","2026-09-27","TestGetProduct","test_002_get_product","",""
-"RULE-auth-refresh-issues-new-pair. Verifies: refresh returns exactly the two tokens.","51","Refresh response matches RefreshResponse exactly","tests.auth","2026-09-27","passed","2026-09-27","TestRefresh","test_003_refresh","",""
-"RULE-products-invalid-paging-rejected. Verifies: bad paging input is rejected with a reason.","48","Invalid limit is rejected with 400","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-auth-bearer-required-on-auth-routes. Verifies: protected update/delete are locked.","174","Protected update and delete require a token","tests.products","2026-09-27","passed","2026-09-27","TestProtectedProductRoutes","test_007_protected_routes","",""
-"Endpoint inventory: Product. Verifies: a single product has exactly the Product shape.","46","A product matches Product","tests.products","2026-09-27","passed","2026-09-27","TestGetProduct","test_002_get_product","",""
-"RULE-products-limit-skip-paginate. Verifies: page 2 continues where page 1 ended.","131","Consecutive pages do not overlap","tests.products","2026-09-27","passed","2026-09-27","TestListProducts","test_001_list_products","",""
-"RULE-auth-expiry-configurable. Verifies: a negative lifetime is a client error.","50","Negative lifetime is rejected with 400","tests.auth","2026-09-27","skipped","2026-09-27","TestLogin","test_001_login","",""
-"RULE-auth-invalid-token-rejected (inferred). Verifies: a non-Bearer scheme is refused.","41","Wrong auth scheme is rejected with 401","tests.auth","2026-09-27","skipped","2026-09-27","TestCurrentUser","test_002_current_user","",""
+        Verifies: a refresh token buys a working access token.","250","Refresh issues a working access token","tests.auth","2026-09-28","passed","2026-09-28","TestRefresh","test_003_refresh","",""
+"RULE-auth-expiry-configurable. Verifies: one over the max is a client error.","127","Lifetime above the maximum is rejected with 400","tests.auth","2026-09-28","skipped","2026-09-28","TestLogin","test_001_login","",""
+"RULE-auth-refresh-issues-new-pair. Verifies: the cookie path works (docs).","122","Refresh accepts the refreshToken cookie","tests.auth","2026-09-28","passed","2026-09-28","TestRefresh","test_003_refresh","",""
+"RULE-auth-login-returns-token-pair. Verifies: the token itself names the logged-in user.","129","Access token claims identify the user","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""
+"RULE-products-modified-date-filter. Verifies: the date filter keeps exactly the products in range.","309","modifiedAfter / modifiedBefore keep exactly the products in range","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-products-writes-simulated. Verifies: read-your-write: the documented simulation.","248","An added product is not persisted","tests.products","2026-09-28","passed","2026-09-28","TestAddProduct","test_005_add_product","",""
+"RULE-products-unknown-id-not-found. Verifies: writes to missing products fail clearly.","121","Writes to an unknown product return 404","tests.products","2026-09-28","passed","2026-09-28","TestUpdateDeleteProduct","test_006_update_delete_product","",""
+"RULE-products-modified-date-filter. Verifies: a bad date is rejected with a reason.","130","Invalid modifiedAfter date is rejected with 400","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-products-update-response-shape (inferred). Verifies: update and read return the same shape.","398","Update response has the same shape as GET","tests.products","2026-09-28","skipped","2026-09-28","TestUpdateDeleteProduct","test_006_update_delete_product","",""
+"Endpoint inventory: list item and detail record are identical (observed live).
+        Verifies: both routes return the same record.","276","List and detail return the same record","tests.products","2026-09-28","passed","2026-09-28","TestGetProduct","test_002_get_product","",""
+"Endpoint inventory: every error body is exactly {""message"": <string>}.
+        Verifies: validation errors use the standard body.","398","List validation errors use the standard error body","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-auth-token-types-not-interchangeable (inferred). Verifies: tokens can't be swapped (other direction).","121","Access token cannot be used as a refresh token","tests.auth","2026-09-28","skipped","2026-09-28","TestRefresh","test_003_refresh","",""
+"RULE-products-search-title-description. Verifies: every hit is relevant.","173","Every search hit matches the term","tests.products","2026-09-28","passed","2026-09-28","TestSearchProducts","test_003_search_products","",""
+"RULE-auth-bearer-required-on-auth-routes. Verifies: no token, no access.","126","Missing token is rejected with 401","tests.auth","2026-09-28","passed","2026-09-28","TestCurrentUser","test_002_current_user","",""
+"Endpoint inventory: Product. Verifies: a single product has exactly the Product shape.","37","A product matches Product","tests.products","2026-09-28","passed","2026-09-28","TestGetProduct","test_002_get_product","",""
+"RULE-products-invalid-paging-rejected. Verifies: bad paging input is rejected with a reason.","133","Invalid limit is rejected with 400","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-products-writes-simulated (docs: returns isDeleted & deletedOn; ""will not delete it"").
+        Verifies: delete returns the marker; the product still exists.","414","DELETE returns the deleted marker; the product still exists","tests.products","2026-09-28","passed","2026-09-28","TestUpdateDeleteProduct","test_006_update_delete_product","",""
+"RULE-products-modified-date-filter. Verifies: the date filter keeps exactly the products in range.","318","modifiedAfter / modifiedBefore keep exactly the products in range","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-products-limit-skip-paginate. Verifies: paging past the end is safe.","285","Skipping past the end returns an empty page","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-products-delay-max-5000. Verifies: the documented delay range is enforced.","5145","delay is limited to 5000 ms","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-products-writes-simulated. Verifies: the change is applied, other fields kept.","394","PUT applies the change and keeps other fields","tests.products","2026-09-28","passed","2026-09-28","TestUpdateDeleteProduct","test_006_update_delete_product","",""
+"RULE-auth-login-requires-credentials: missing username/password → 400.
+        Verifies: required fields are enforced.","128","Username and password are both required","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""
+"RULE-products-limit-skip-paginate. Verifies: skip/limit pick the exact window.","151","limit and skip select the right window","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-auth-expiry-configurable. Verifies: the requested lifetime is honoured at both ends.","127","Token lifetime follows expiresInMins","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""
+"RULE-auth-expiry-configurable (docs: refresh expiresInMins applies to the access token).
+        Verifies: the new access token gets the requested lifetime.","123","Refresh honours expiresInMins for the new access token","tests.auth","2026-09-28","passed","2026-09-28","TestRefresh","test_003_refresh","",""
+"Endpoint inventory: every error body is exactly {""message"": <string>}.
+        Verifies: 404 uses the standard body.","128","404 uses the standard error body","tests.products","2026-09-28","passed","2026-09-28","TestGetProduct","test_002_get_product","",""
+"RULE-auth-login-sets-token-cookies: tokens are returned in the body and set as cookies.
+        Verifies: browser clients get the tokens as cookies.","130","Login sets both token cookies","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""
+"RULE-auth-refresh-token-single-use (inferred). Verifies: a refresh token is single-use.","361","A used refresh token cannot be reused","tests.auth","2026-09-28","skipped","2026-09-28","TestRefresh","test_003_refresh","",""
+"RULE-products-category-filter. Verifies: an unknown category is empty, not 404.","138","Unknown category returns an empty list","tests.products","2026-09-28","passed","2026-09-28","TestCategories","test_004_categories","",""
+"Endpoint inventory: ProductList / Product (21 required fields, brand optional, no extras).
+        Verifies: every item on a page is a valid Product.","478","Every product in the catalog matches Product","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-products-writes-simulated. Verifies: add returns the product with a new id.","252","Add echoes the product with a new id","tests.products","2026-09-28","passed","2026-09-28","TestAddProduct","test_005_add_product","",""
+"RULE-auth-cookie-token-accepted. Verifies: the cookie path works like the header.","124","Access token is accepted as a cookie","tests.auth","2026-09-28","passed","2026-09-28","TestCurrentUser","test_002_current_user","",""
+"RULE-auth-bearer-required-on-auth-routes. Verifies: the protected write route is locked.","373","Protected add requires a token","tests.products","2026-09-28","passed","2026-09-28","TestProtectedProductRoutes","test_007_protected_routes","",""
+"RULE-auth-bad-credentials-generic-error: wrong password and unknown user both return 400
+        ""Invalid credentials"". Verifies: no login, and no hint which usernames exist.","127","Bad credentials are rejected without saying which","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""
+"RULE-products-limit-skip-paginate. Verifies: page 2 continues where page 1 ended.","300","Consecutive pages do not overlap","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-auth-login-requires-credentials: missing username/password → 400.
+        Verifies: required fields are enforced.","126","Username and password are both required","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""
+"Endpoint inventory: every error body is exactly {""message"": <string>}.
+        Verifies: refresh errors use the standard body.","244","Refresh errors use the standard error body","tests.auth","2026-09-28","passed","2026-09-28","TestRefresh","test_003_refresh","",""
+"RULE-products-search-title-description. Verifies: no match is an empty result, not an error.","151","No match returns an empty result","tests.products","2026-09-28","passed","2026-09-28","TestSearchProducts","test_003_search_products","",""
+"RULE-products-search-title-description + RULE-products-limit-skip-paginate.
+        Verifies: search results page like the list.","291","Search results can be paginated","tests.products","2026-09-28","passed","2026-09-28","TestSearchProducts","test_003_search_products","",""
+"RULE-products-categories-lists-agree. Verifies: the two category routes list the same categories.","258","The two category routes agree","tests.products","2026-09-28","passed","2026-09-28","TestCategories","test_004_categories","",""
+"RULE-products-unknown-id-not-found. Verifies: unknown ids fail with a useful message.","126","Unknown product id returns 404 with a reason","tests.products","2026-09-28","passed","2026-09-28","TestGetProduct","test_002_get_product","",""
+"RULE-products-unknown-id-not-found. Verifies: writes to missing products fail clearly.","123","Writes to an unknown product return 404","tests.products","2026-09-28","passed","2026-09-28","TestUpdateDeleteProduct","test_006_update_delete_product","",""
+"RULE-products-writes-simulated. Verifies: read-your-write: the change is returned but not saved.","396","PATCH returns the change but does not persist it","tests.products","2026-09-28","passed","2026-09-28","TestUpdateDeleteProduct","test_006_update_delete_product","",""
+"RULE-products-category-filter. Verifies: the filter is exact.","153","Category filter returns only that category","tests.products","2026-09-28","passed","2026-09-28","TestCategories","test_004_categories","",""
+"RULE-products-search-title-description (observed live: empty q → all).
+        Verifies: pins the observed empty-q behaviour.","296","Empty query returns the whole catalog","tests.products","2026-09-28","passed","2026-09-28","TestSearchProducts","test_003_search_products","",""
+"RULE-products-select-fields: comma-separated or repeated select; id always included.
+        Verifies: field selection trims the payload.","143","select returns only the requested fields","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-products-limit-skip-paginate. Verifies: limit=0 means no limit.","286","limit=0 returns every product","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-products-unknown-id-not-found. Verifies: writes to missing products fail clearly.","120","Writes to an unknown product return 404","tests.products","2026-09-28","passed","2026-09-28","TestUpdateDeleteProduct","test_006_update_delete_product","",""
+"RULE-auth-invalid-token-rejected (inferred). Verifies: a non-Bearer scheme is refused.","124","Wrong auth scheme is rejected with 401","tests.auth","2026-09-28","skipped","2026-09-28","TestCurrentUser","test_002_current_user","",""
+"RULE-auth-invalid-token-rejected (inferred). Verifies: the documented header format is enforced.","123","Token without the Bearer prefix is rejected","tests.auth","2026-09-28","skipped","2026-09-28","TestCurrentUser","test_002_current_user","",""
+"RULE-products-sort-by-order. Verifies: sorting covers the whole result.","153","Products sort by price","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-auth-me-hides-sensitive-fields (inferred). Verifies: no secrets in the identity response.","129","Current user response hides sensitive data","tests.auth","2026-09-28","skipped","2026-09-28","TestCurrentUser","test_002_current_user","",""
+"RULE-products-update-response-shape (inferred). Verifies: update and read return the same shape.","397","Update response has the same shape as GET","tests.products","2026-09-28","skipped","2026-09-28","TestUpdateDeleteProduct","test_006_update_delete_product","",""
+"Endpoint inventory: every error body is exactly {""message"": <string>}.
+        Verifies: every login error is the standard {message} body.","257","Login errors use the standard error body","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""
+"RULE-products-modified-date-filter. Verifies: the date filter keeps exactly the products in range.","337","modifiedAfter / modifiedBefore keep exactly the products in range","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-auth-bad-credentials-generic-error: wrong password and unknown user both return 400
+        ""Invalid credentials"". Verifies: no login, and no hint which usernames exist.","127","Bad credentials are rejected without saying which","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""
+"RULE-products-add-validates-body (inferred). Verifies: a product needs content.","119","Empty body is rejected","tests.products","2026-09-28","skipped","2026-09-28","TestAddProduct","test_005_add_product","",""
+"RULE-auth-bearer-required-on-auth-routes. Verifies: the /auth/ mirror of a public route is locked.","253","Protected product list requires a token","tests.products","2026-09-28","passed","2026-09-28","TestProtectedProductRoutes","test_007_protected_routes","",""
 "RULE-auth-login-returns-token-pair: login returns identity + access and refresh JWTs.
-        Verifies: valid credentials log the user in.","272","Valid credentials return a token pair","tests.auth","2026-09-27","passed","2026-09-27","TestLogin","test_001_login","",""
-"RULE-products-category-filter. Verifies: an unknown category is empty, not 404.","69","Unknown category returns an empty list","tests.products","2026-09-27","passed","2026-09-27","TestCategories","test_004_categories","",""
-"RULE-auth-refresh-token-single-use (inferred). Verifies: a refresh token is single-use.","150","A used refresh token cannot be reused","tests.auth","2026-09-27","skipped","2026-09-27","TestRefresh","test_003_refresh","",""
+        Verifies: valid credentials log the user in.","332","Valid credentials return a token pair","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""
+"RULE-products-add-validates-body (inferred). Verifies: field types are validated.","120","Wrong price type is rejected","tests.products","2026-09-28","skipped","2026-09-28","TestAddProduct","test_005_add_product","",""
+"RULE-auth-invalid-token-rejected (inferred). Verifies: a forged signature is refused.","125","Forged signature is rejected with 401","tests.auth","2026-09-28","skipped","2026-09-28","TestCurrentUser","test_002_current_user","",""
+"RULE-products-search-title-description. Verifies: case doesn't matter.","313","Search ignores case","tests.products","2026-09-28","passed","2026-09-28","TestSearchProducts","test_003_search_products","",""
+"Endpoint inventory: GET /products/{id}. Verifies: a product can be fetched by id.","32","Get a product by id","tests.products","2026-09-28","passed","2026-09-28","TestGetProduct","test_002_get_product","",""
+"RULE-auth-refresh-issues-new-pair. Verifies: refresh returns exactly the two tokens.","122","Refresh response matches RefreshResponse exactly","tests.auth","2026-09-28","passed","2026-09-28","TestRefresh","test_003_refresh","",""
+"RULE-products-unknown-id-not-found. Verifies: unknown ids fail with a useful message.","125","Unknown product id returns 404 with a reason","tests.products","2026-09-28","passed","2026-09-28","TestGetProduct","test_002_get_product","",""
+"RULE-auth-refresh-token-required: invalid → 403, missing → 401. Verifies: a bad refresh token is refused.","121","Invalid refresh token is rejected with 403","tests.auth","2026-09-28","passed","2026-09-28","TestRefresh","test_003_refresh","",""
+"RULE-auth-bearer-required-on-auth-routes. Verifies: protected update/delete are locked.","297","Protected update and delete require a token","tests.products","2026-09-28","passed","2026-09-28","TestProtectedProductRoutes","test_007_protected_routes","",""
+"RULE-auth-token-types-not-interchangeable (inferred). Verifies: tokens can't be swapped.","126","Refresh token cannot be used as an access token","tests.auth","2026-09-28","skipped","2026-09-28","TestCurrentUser","test_002_current_user","",""
+"RULE-auth-bearer-required-on-auth-routes. Verifies: protected update/delete are locked.","298","Protected update and delete require a token","tests.products","2026-09-28","passed","2026-09-28","TestProtectedProductRoutes","test_007_protected_routes","",""
+"RULE-products-modified-date-filter + RULE-products-category-filter.
+        Verifies: filters combine as documented.","277","Category filter combines with the date filter","tests.products","2026-09-28","passed","2026-09-28","TestCategories","test_004_categories","",""
+"Endpoint inventory: CurrentUser (identity fields + other user fields).
+        Verifies: identity fields a client relies on are present and typed.","135","Current user matches CurrentUser","tests.auth","2026-09-28","passed","2026-09-28","TestCurrentUser","test_002_current_user","",""
+"RULE-auth-refresh-token-required. Verifies: the refresh token is required.","120","Missing refresh token is rejected with 401","tests.auth","2026-09-28","passed","2026-09-28","TestRefresh","test_003_refresh","",""
+"RULE-products-invalid-paging-rejected. Verifies: bad skip input is rejected with a reason.","130","Negative skip is rejected with 400","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-auth-login-returns-token-pair. Verifies: the login body has exactly the documented fields.","130","Login response matches LoginResponse exactly","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""
+"RULE-products-select-fields: comma-separated or repeated select; id always included.
+        Verifies: field selection trims the payload.","144","select returns only the requested fields","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-products-default-page-30. Verifies: defaults: first page of 30.","234","Default list is the first page of 30","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-auth-expiry-configurable. Verifies: the requested lifetime is honoured at both ends.","128","Token lifetime follows expiresInMins","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""
+"RULE-auth-login-requires-credentials: missing username/password → 400.
+        Verifies: required fields are enforced.","130","Username and password are both required","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""
+"Endpoint inventory: every error body is exactly {""message"": <string>}.
+        Verifies: auth errors use the standard {message} body.","127","Protected-route errors use the standard error body","tests.auth","2026-09-28","passed","2026-09-28","TestCurrentUser","test_002_current_user","",""
+"RULE-auth-invalid-token-rejected (inferred). Verifies: garbage is refused cleanly.","124","Malformed token is rejected with 401","tests.auth","2026-09-28","skipped","2026-09-28","TestCurrentUser","test_002_current_user","",""
+"RULE-products-unknown-id-not-found. Verifies: unknown ids fail with a useful message.","128","Unknown product id returns 404 with a reason","tests.products","2026-09-28","passed","2026-09-28","TestGetProduct","test_002_get_product","",""
+"RULE-products-sort-by-order. Verifies: bad sort input is rejected with a reason.","130","Invalid sort order is rejected with 400","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-auth-expiry-configurable (observed live: 0 → 30 days). Verifies: pins the observed meaning of 0.","128","expiresInMins 0 gives a 30-day token","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""
+"RULE-products-invalid-paging-rejected. Verifies: bad paging input is rejected with a reason.","132","Invalid limit is rejected with 400","tests.products","2026-09-28","passed","2026-09-28","TestListProducts","test_001_list_products","",""
+"RULE-auth-expiry-configurable. Verifies: a negative lifetime is a client error.","124","Negative lifetime is rejected with 400","tests.auth","2026-09-28","skipped","2026-09-28","TestLogin","test_001_login","",""
+"RULE-auth-expiry-configurable: expiresInMins optional, default 60, max 43200.
+        Verifies: no expiresInMins gives the documented default.","129","Token lifetime defaults to 60 minutes","tests.auth","2026-09-28","passed","2026-09-28","TestLogin","test_001_login","",""

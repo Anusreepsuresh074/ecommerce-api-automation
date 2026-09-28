@@ -1,0 +1,2 @@
+2026-09-28 08:52:06,693 | INFO | src.core.api_base | GET https://dummyjson.com/products | params={'limit': 1, 'delay': 5001} | headers=None | json=None
+2026-09-28 08:52:06,823 | INFO | src.core.api_base | -> 400 {"message": "Delay should be less than 5 seconds (5000 milliseconds)"}
