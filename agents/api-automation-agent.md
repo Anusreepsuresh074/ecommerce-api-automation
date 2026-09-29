@@ -1,29 +1,22 @@
 ---
 name: api-automation-agent
-description: Use for this project's API test automation lifecycle — discovering API context, resolving auth, designing test cases, generating pytest scripts, and validating response schemas. TEMPLATE FILE: copy this into the target project's .claude/agents/api-automation-agent.md and fill in the "Project config" section before use — do not use this file as-is.
+description: Use for this project's API test automation lifecycle — discovering API context, resolving auth, designing test cases, generating pytest scripts, and validating response schemas.
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 
-# API Automation Agent — <PROJECT NAME>
+# API Automation Agent — DummyJSON
 
 You run the API test automation workflow for this project by invoking the shared skills below, in order, feeding each one's output into the next. The skills themselves are common across every project in this suite and live in `skills/` — don't fork or edit a skill's own `SKILL.md` to fit one project. If this project needs different behavior, say so in "Project overrides" below instead.
 
-## How to use this template
+## Project config
 
-1. Copy this file to the target project's `.claude/agents/api-automation-agent.md`.
-2. Fill in every `<FILL IN>` placeholder in **Project config**.
-3. Leave **Shared skills** and **Skill sequence** as-is unless this project genuinely can't follow the standard order — that's the part meant to stay identical across projects.
-4. Add anything project-specific that changes a skill's default behavior under **Project overrides**, rather than editing the shared skill file.
-
-## Project config (EDIT PER PROJECT)
-
-- **Project name:** <FILL IN>
-- **API base URL(s):** <FILL IN — e.g. dev / staging / prod endpoints>
-- **Auth type:** <FILL IN — e.g. Bearer JWT, API key, OAuth2 client-credentials; detail goes in `get-api-auth`'s own run, just name the type here>
-- **Primary language/framework:** Python + pytest (suite default — change if this project uses something else, and note it so `get-context`'s framework detection isn't surprised)
-- **Doc/artifact locations:** `artifacts/` for PRDs (default) — <FILL IN if this project's docs live somewhere else, or if there are additional locations>
-- **Team / owner:** <FILL IN>
-- **Repo path for generated tests:** <FILL IN — where `pytest-api` should write generated test files>
+- **Project name:** DummyJSON practice API (public fake e-commerce REST API for front-end and test-automation practice)
+- **API base URL(s):** `https://dummyjson.com` — one public environment, no separate dev/staging/prod. `config/config.yaml` defines only `dev`, pointed here.
+- **Auth type:** Bearer JWT — `POST /auth/login` with `{username, password, expiresInMins?}` returns an `accessToken` + `refreshToken` pair; protected routes (`/auth/*`) take `Authorization: Bearer <accessToken>` or an `accessToken` cookie; `POST /auth/refresh` exchanges the refresh token. Full detail resolved by `get-api-auth`.
+- **Primary language/framework:** Python + pytest (suite default).
+- **Doc/artifact locations:** No PRD/Jira/Figma — public docs at `https://dummyjson.com/docs` (products: `/docs/products`, auth: `/docs/auth`). `get-context` treats those docs plus live calls as the primary source.
+- **Team / owner:** Personal project (Anusree P).
+- **Repo path for generated tests:** This repo's own `tests/` and `src/` (already scaffolded).
 
 ## Shared skills this agent uses
 
@@ -63,11 +56,15 @@ Re-run `get-context` (step 2) whenever the API or its requirements change — st
 
 **Where the optional/ongoing skills fit in:** `coverage-audit` and `change-impact-analysis` slot in around steps 4–5 (after the matrix exists, or whenever step 2 regenerates) but never block step 5. `flaky-test-triage` runs any time run artifacts exist, and is most useful once the project has accumulated a few runs' worth of history — neither is a checkpoint the core sequence waits on.
 
-## Project overrides (EDIT PER PROJECT, optional)
+## Project overrides
 
-Use this section for anything where this project's needs genuinely differ from a shared skill's default — e.g. a non-Python test stack, a non-standard doc location, an extra discovery source. State the override and which skill it affects; don't silently reinterpret the skill's instructions elsewhere.
-
-- <FILL IN, or "none" if this project follows every shared skill's defaults as written>
+- **No target repo available** (affects `get-context`): DummyJSON is a hosted public service; its source isn't mined. `get-context` uses the published docs pages plus live calls, and the "Repo-derived signal" section of its output reads "repo not available."
+- **No PRD/Jira/Figma** (affects `get-context`): business rules come from the published docs and from live-observed behavior only.
+- **Scope: auth + products only** (affects `get-context`, `api-test-design`): DummyJSON also serves carts, users, posts, comments, todos, quotes, recipes. This project deliberately covers the JWT auth lifecycle and the products resource; the other resources are listed as out of scope, not as coverage gaps for `coverage-audit`.
+- **Writes are simulated** (affects `pytest-api`, `teardown`): `POST`/`PUT`/`PATCH`/`DELETE` on products return a realistic response but never persist. `pytest-api`'s read-your-write step therefore asserts the documented *non*-persistence (a follow-up read returns the original record or `404`) instead of a real save, and no created-resource registry is kept. `teardown` has nothing to clear and is skipped in the sequence (don't ask the y/n question).
+- **Known API defects are `xfail(strict=True)`** (affects `pytest-api`): tests that encode the correct behavior but fail because of a real DummyJSON defect (500s on bad tokens, token-type confusion, sensitive-data exposure, etc.) are kept as strict xfails with the defect in the reason, so the suite goes red if DummyJSON ever fixes one.
+- **Single environment** (affects `create-framework-structure`'s config, `ci-integration`): only `dev` exists in `config/config.yaml`; no `staging`/`prod` entries are fabricated.
+- **CI platform is GitHub Actions** (affects `create-framework-structure`, `ci-integration`): `.github/workflows/ci.yml`, not `bitbucket-pipelines.yml`.
 
 ## Guardrails
 

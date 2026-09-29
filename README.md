@@ -11,9 +11,11 @@ A Python + pytest API test automation suite for [DummyJSON](https://dummyjson.co
 77 passed, 14 xfailed in ~80s (parallel, -n auto)  →  https://dummyjson.com (live)
 ```
 
+The 14 xfails are the [13 defects below](#defects-found): defect 13 is checked for both `PUT` and `PATCH`. Allure lists xfails under *skipped*.
+
 ## Why this project
 
-This is the companion to my [Restful-Booker suite](https://github.com/Anusreepsuresh074/restful-booker-api-automation). The same API is also tested in [Postman + Newman](https://github.com/Anusreepsuresh074/dummyjson-postman-newman) and for performance in [JMeter](https://github.com/Anusreepsuresh074/ecommerce-performance-testing). Both repos were built by the **same reusable AI skill workflow** (see [How it was built](#how-it-was-built)), aimed at an API with a very different auth model: JWT with refresh and expiry, instead of a cookie token.
+This is the companion to my [Restful-Booker suite](https://github.com/Anusreepsuresh074/restful-booker-api-automation). The same API is also tested in [Postman + Newman](https://github.com/Anusreepsuresh074/dummyjson-postman-newman) and for performance in [JMeter](https://github.com/Anusreepsuresh074/ecommerce-performance-testing). This repo and the Restful-Booker one were built by the **same reusable AI skill workflow** (see [How it was built](#how-it-was-built)), aimed at an API with a very different auth model: JWT with refresh and expiry, instead of a cookie token.
 
 - **The whole Bearer token lifecycle, tested for real.** The suite logs in, decodes the JWT and checks its claims and lifetime, then calls a protected route. It then lets a 1-minute token **actually expire** and confirms `401 "Token Expired!"`. Finally it refreshes and confirms the new token works. Nothing is faked: that one test waits for the token's real `exp` (~65 s, marked `slow`).
 - **Security defects found and pinned, not ignored.** The suite found these:
@@ -125,7 +127,7 @@ It needs two repository secrets (Settings → Secrets and variables → Actions)
 
 ## How it was built
 
-Every file in `src/`, `tests/`, `context/` and the CI config was produced by running my own reusable Claude Code skills (`skills/`, with the agent template in `agents/`), in the agent's fixed order:
+Every file in `src/`, `tests/`, `context/` and the CI config was produced by running my own reusable Claude Code skills (`skills/`, with the agent and this project's config in `agents/`), in the agent's fixed order:
 
 | Step | Skill | Output here |
 |---|---|---|
@@ -150,4 +152,4 @@ The skills are identical to the ones in the Restful-Booker repo. Only the agent'
 | `context/schema-validation-report.md` | Findings from running the suite live, including the defects |
 | `src/`, `tests/` | The framework and test suite |
 | `config/config.yaml` | Environment config (one real environment: the public instance) |
-| `skills/`, `agents/` | The reusable AI skill workflow and agent template |
+| `skills/`, `agents/` | The reusable AI skill workflow, and the agent with this project's config |
