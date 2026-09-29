@@ -1,4 +1,0 @@
-2026-09-28 08:52:02,567 | INFO | src.core.api_base | GET https://dummyjson.com/auth/products | params=None | headers=None | json=None
-2026-09-28 08:52:02,685 | INFO | src.core.api_base | -> 401 {"message": "Access Token is required"}
-2026-09-28 08:52:02,687 | INFO | src.core.api_base | GET https://dummyjson.com/auth/products | params={'limit': 3} | headers={'Authorization': '***'} | json=None
-2026-09-28 08:52:02,806 | INFO | src.core.api_base | -> 200 {"products": [{"id": 1, "title": "Essence Mascara Lash Princess", "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.", "category": "beauty", "price": 9.99, "discountPercentage": 10.48, "rating": 2.56, "stock": 99, "tags": ["beauty", "mascara"], "brand": "Essence", "sku": "BEA-ESS-ESS-001", "weight": 4, "dimensions": {"width": 15.14, "height": 13.08, "dept

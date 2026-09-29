@@ -1,2 +1,0 @@
-INFO     src.core.api_base:api_base.py:39 PATCH https://dummyjson.com/products/99999 | params=None | headers=None | json={'title': 'x'}
-INFO     src.core.api_base:api_base.py:45 -> 404 {"message": "Product with id '99999' not found"}

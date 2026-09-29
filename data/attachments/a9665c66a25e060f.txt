@@ -1,2 +1,0 @@
-status_code=400
-{"message": "Delay should be less than 5 seconds (5000 milliseconds)"}

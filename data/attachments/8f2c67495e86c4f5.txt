@@ -1,2 +1,0 @@
-INFO     src.core.api_base:api_base.py:39 POST https://dummyjson.com/products/add | params=None | headers=None | json={'title': 'QA Test Product a4fddfd7', 'description': 'Created by an automated API test.', 'price': 'free', 'category': 'smartphones', 'brand': 'QA Brand', 'stock': 10}
-INFO     src.core.api_base:api_base.py:45 -> 201 {"id": 195, "title": "QA Test Product a4fddfd7", "price": "free", "stock": 10, "description": "Created by an automated API test.", "brand": "QA Brand", "category": "smartphones"}

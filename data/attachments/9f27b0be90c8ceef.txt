@@ -1,4 +1,0 @@
-GET https://dummyjson.com/products/search
-params={'q': 'PHONE', 'limit': 0}
-headers=None
-json=None

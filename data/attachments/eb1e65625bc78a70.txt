@@ -1,2 +1,0 @@
-INFO     src.core.api_base:api_base.py:39 GET https://dummyjson.com/products | params={'limit': 1, 'delay': 5001} | headers=None | json=None
-INFO     src.core.api_base:api_base.py:45 -> 400 {"message": "Delay should be less than 5 seconds (5000 milliseconds)"}

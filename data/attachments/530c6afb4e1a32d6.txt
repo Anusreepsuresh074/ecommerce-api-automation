@@ -1,4 +1,0 @@
-GET https://dummyjson.com/products
-params={'limit': 1, 'delay': 5001}
-headers=None
-json=None

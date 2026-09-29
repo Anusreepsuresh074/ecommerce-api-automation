@@ -1,4 +1,0 @@
-GET https://dummyjson.com/products
-params={'sortBy': 'price', 'order': 'sideways'}
-headers=None
-json=None

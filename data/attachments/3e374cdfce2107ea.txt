@@ -1,2 +1,0 @@
-INFO     src.core.api_base:api_base.py:39 GET https://dummyjson.com/products/category/no-such-category | params=None | headers=None | json=None
-INFO     src.core.api_base:api_base.py:45 -> 200 {"products": [], "total": 0, "skip": 0, "limit": 0}

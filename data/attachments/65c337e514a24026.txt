@@ -1,4 +1,0 @@
-PATCH https://dummyjson.com/products/5
-params=None
-headers=None
-json={'title': 'QA Shape'}

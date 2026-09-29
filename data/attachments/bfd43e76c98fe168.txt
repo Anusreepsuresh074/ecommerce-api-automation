@@ -1,2 +1,0 @@
-status_code=400
-{"message": "Invalid 'order' - should be either 'asc' or 'desc'"}

@@ -1,2 +1,0 @@
-INFO     src.core.api_base:api_base.py:39 GET https://dummyjson.com/products/abc | params=None | headers=None | json=None
-INFO     src.core.api_base:api_base.py:45 -> 404 {"message": "Product with id 'abc' not found"}
