@@ -1,0 +1,2 @@
+status_code=400
+{"message": "Invalid 'limit' - should be a positive number"}

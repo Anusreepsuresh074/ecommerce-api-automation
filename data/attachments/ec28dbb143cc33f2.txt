@@ -1,0 +1,4 @@
+GET https://dummyjson.com/products/search
+params={'q': 'qa-zzqqxx-no-such-product'}
+headers=None
+json=None

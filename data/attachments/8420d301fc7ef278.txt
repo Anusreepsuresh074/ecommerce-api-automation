@@ -1,0 +1,4 @@
+GET https://dummyjson.com/products
+params={'modifiedAfter': 'not-a-date'}
+headers=None
+json=None

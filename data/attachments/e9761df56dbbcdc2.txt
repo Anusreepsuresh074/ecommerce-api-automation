@@ -1,0 +1,4 @@
+GET https://dummyjson.com/products/categories
+params=None
+headers=None
+json=None
