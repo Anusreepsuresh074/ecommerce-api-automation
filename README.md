@@ -13,7 +13,7 @@ A Python + pytest API test automation suite for [DummyJSON](https://dummyjson.co
 
 ## Why this project
 
-This is the companion to my [Restful-Booker suite](https://github.com/Anusreepsuresh074/restful-booker-api-automation). Both repos were built by the **same reusable AI skill workflow** (see [How it was built](#how-it-was-built)), aimed at an API with a very different auth model: JWT with refresh and expiry, instead of a cookie token.
+This is the companion to my [Restful-Booker suite](https://github.com/Anusreepsuresh074/restful-booker-api-automation). The same API is also tested in [Postman + Newman](https://github.com/Anusreepsuresh074/dummyjson-postman-newman) and for performance in [JMeter](https://github.com/Anusreepsuresh074/ecommerce-performance-testing). Both repos were built by the **same reusable AI skill workflow** (see [How it was built](#how-it-was-built)), aimed at an API with a very different auth model: JWT with refresh and expiry, instead of a cookie token.
 
 - **The whole Bearer token lifecycle, tested for real.** The suite logs in, decodes the JWT and checks its claims and lifetime, then calls a protected route. It then lets a 1-minute token **actually expire** and confirms `401 "Token Expired!"`. Finally it refreshes and confirms the new token works. Nothing is faked: that one test waits for the token's real `exp` (~65 s, marked `slow`).
 - **Security defects found and pinned, not ignored.** The suite found these:
