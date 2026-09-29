@@ -1,4 +1,0 @@
-GET https://dummyjson.com/auth/me
-params=None
-headers={'Authorization': '***'}
-json=None

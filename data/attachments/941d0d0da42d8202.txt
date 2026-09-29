@@ -1,2 +1,0 @@
-status_code=200
-{"id": 3, "title": "Powder Canister", "price": 1.23, "discountPercentage": 9.84, "stock": 89, "rating": 4.64, "images": ["https://cdn.dummyjson.com/product-images/beauty/powder-canister/1.webp"], "thumbnail": "https://cdn.dummyjson.com/product-images/beauty/powder-canister/thumbnail.webp", "description": "The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.", "brand": "Ve

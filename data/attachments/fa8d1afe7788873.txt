@@ -1,4 +1,0 @@
-POST https://dummyjson.com/products/add
-params=None
-headers=None
-json={}

@@ -1,4 +1,0 @@
-GET https://dummyjson.com/products/search
-params={'q': ''}
-headers=None
-json=None

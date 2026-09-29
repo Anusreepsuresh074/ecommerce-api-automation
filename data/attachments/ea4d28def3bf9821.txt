@@ -1,4 +1,0 @@
-GET https://dummyjson.com/products
-params={'sortBy': 'nosuchfield', 'limit': 5}
-headers=None
-json=None

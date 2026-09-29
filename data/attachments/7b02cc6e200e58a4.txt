@@ -1,4 +1,0 @@
-GET https://dummyjson.com/products/99999
-params=None
-headers=None
-json=None

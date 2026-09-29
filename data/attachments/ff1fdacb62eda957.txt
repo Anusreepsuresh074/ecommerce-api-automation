@@ -1,4 +1,0 @@
-INFO     src.core.api_base:api_base.py:39 POST https://dummyjson.com/auth/refresh | params=None | headers=None | json={'refreshToken': '***'}
-INFO     src.core.api_base:api_base.py:45 -> 403 {"message": "Invalid refresh token"}
-INFO     src.core.api_base:api_base.py:39 POST https://dummyjson.com/auth/refresh | params=None | headers=None | json={}
-INFO     src.core.api_base:api_base.py:45 -> 401 {"message": "Refresh token required"}

@@ -1,4 +1,0 @@
-POST https://dummyjson.com/products/add
-params=None
-headers=None
-json={'title': 'QA Test Product 5c20d330', 'description': 'Created by an automated API test.', 'price': 'free', 'category': 'smartphones', 'brand': 'QA Brand', 'stock': 10}
