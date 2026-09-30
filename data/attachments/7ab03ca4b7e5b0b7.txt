@@ -1,0 +1,2 @@
+status_code=200
+{"id": 2, "title": "QA Renamed", "price": 19.99, "discountPercentage": 18.19, "stock": 34, "rating": 2.86, "images": ["https://cdn.dummyjson.com/product-images/beauty/eyeshadow-palette-with-mirror/1.webp"], "thumbnail": "https://cdn.dummyjson.com/product-images/beauty/eyeshadow-palette-with-mirror/thumbnail.webp", "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go ma

@@ -1,0 +1,2 @@
+status_code=200
+{"products": [{"id": 110, "title": "Selfie Lamp with iPhone", "description": "The Selfie Lamp with iPhone is a portable and adjustable LED light designed to enhance your selfies and video calls. Attach it to your iPhone for well-lit photos.", "category": "mobile-accessories", "price": 14.99, "discountPercentage": 19.4, "rating": 3.55, "stock": 58, "tags": ["electronics", "selfie accessories"], "brand": "GadgetMaster", "sku": "MOB-GAD-SEL-110", "weight": 10, "dimensions": {"width": 5.26, "height"

@@ -1,0 +1,4 @@
+POST https://dummyjson.com/auth/login
+params=None
+headers=None
+json={'password': '***'}

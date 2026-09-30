@@ -1,0 +1,2 @@
+status_code=500
+{"message": "Maximum access token expire time can be 43200 minutes"}

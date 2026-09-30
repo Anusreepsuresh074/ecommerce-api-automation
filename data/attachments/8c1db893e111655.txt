@@ -1,0 +1,4 @@
+GET https://dummyjson.com/products/category/smartphones
+params={'limit': 0, 'select': 'meta'}
+headers=None
+json=None
