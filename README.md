@@ -1,7 +1,7 @@
 # DummyJSON API Test Automation
 
 ![CI](https://github.com/Anusreepsuresh074/ecommerce-api-automation/actions/workflows/ci.yml/badge.svg)
-**[Live test report](https://anusreepsuresh074.github.io/ecommerce-api-automation/)**
+**[Live test report](https://anusreepsuresh074.github.io/ecommerce-api-automation/)** (the latest nightly full regression run, all 91 tests)
 
 A Python + pytest API test automation suite for [DummyJSON](https://dummyjson.com), a public fake e-commerce API with a real **JWT Bearer auth** flow (login → access + refresh token → protected routes → expiry → refresh) and a 194-product catalog with pagination, field selection, sorting, date filtering, search and categories.
 
@@ -12,6 +12,8 @@ A Python + pytest API test automation suite for [DummyJSON](https://dummyjson.co
 ```
 
 The 14 xfails are the [13 defects below](#defects-found): defect 13 is checked for both `PUT` and `PATCH`. Allure lists xfails under *skipped*.
+
+Separately, **52 offline unit tests** (`tests/unit/`) check the framework itself: credential redaction, JWT decode/tamper, the Allure step helper and the assertion helper. They never touch the network and run before the API tests in CI.
 
 ## Why this project
 
@@ -47,7 +49,7 @@ This is the companion to my [Restful-Booker suite](https://github.com/Anusreepsu
 | 12 | Add product with `price: "free"` → `201` | `400` | `test_add_product_with_wrong_price_type_is_rejected` |
 | 13 | `PUT`/`PATCH` return 11 fields; `GET` returns 22 | same shape | `test_update_response_has_same_shape_as_get` |
 
-Full evidence is in `context/schema-validation-report.md`.
+Full evidence is in `context/schema-validation-report.md`. [`docs/defect-write-up.md`](docs/defect-write-up.md) shows defect 1 written up as a bug report: severity, steps with `curl`, expected vs actual, impact.
 
 ## Architecture
 
@@ -67,10 +69,11 @@ src/
 tests/
 ├── auth/                  # login, current user (Bearer), refresh
 ├── products/              # list, get, search, categories, add, update/delete, /auth/ routes
+├── unit/                  # offline tests of the framework itself (not part of the 91)
 └── conftest.py            # session login, bearer_header, helpers
 ```
 
-No test or helper calls `requests` directly, and no test writes a bare `assert`. Every helper checks the status first, then validates the success schema on 2xx or the standard error schema otherwise. That way a negative test gets its error-shape check for free.
+No test or helper calls `requests` directly, and no test writes a bare `assert`. `AssertHelper` raises `AssertionError` itself, so its checks still run under `python -O`, which strips `assert` statements. Every helper checks the status first, then validates the success schema on 2xx or the standard error schema otherwise. That way a negative test gets its error-shape check for free.
 
 ### The Page Object Model, adapted for an API
 
@@ -103,6 +106,7 @@ pytest -m regression     # all 91
 pytest -m "not slow"     # skip the ~65s real-expiry test
 pytest -m auth           # or: -m products
 pytest -n auto --dist loadscope
+pytest tests/unit        # 52 offline framework tests, well under a second
 ruff check . && ruff format --check .
 ```
 
@@ -116,11 +120,11 @@ allure open reports/allure-report
 
 `.github/workflows/ci.yml`:
 
-- **Lint** (ruff check + format) gates every run.
+- **Lint + unit tests** (ruff check + format, then the offline framework tests) gate every run.
 - **Smoke suite** on every push and PR; **full regression suite** nightly at 02:30 UTC and on demand. Both run in parallel by file, with 2 reruns 5 s apart for network errors only (assertion failures are never retried).
 - **JUnit test summary** on each run page, and a failure summary with the breaking schema findings.
 - **Run history** (last 20 runs, via `actions/cache`) so flaky tests can be detected across runs.
-- **Allure report** with trend history, published to GitHub Pages after every non-PR run.
+- **Allure report** with trend history, published to GitHub Pages after each nightly or manual full regression run. Pushes run only the smoke subset, so they don't publish, and the live report always shows all 91 tests, the 14 defect xfails included.
 - **Dependabot** proposes dependency and action updates weekly.
 
 It needs two repository secrets (Settings → Secrets and variables → Actions): `AUTH_USERNAME` and `AUTH_PASSWORD`.
@@ -137,8 +141,10 @@ Every file in `src/`, `tests/`, `context/` and the CI config was produced by run
 | 4 | `api-test-design` | `context/test-case-matrix.md`: 75 cases, **human-reviewed before any code was written** |
 | 5 | `pytest-api` | The suite, then a live run + schema validation → `context/schema-validation-report.md` |
 | 6 | `teardown` | Skipped: DummyJSON never persists writes, so there is nothing to clean up |
-| 7 | `create-report` | `reports/test-report.md` + the Allure HTML report |
+| 7 | `create-report` | A Markdown test report (a committed snapshot: [`docs/test-report.md`](docs/test-report.md)) + the Allure HTML report |
 | 8 | `ci-integration` | The GitHub Actions pipeline above |
+
+Two later additions came from a review rather than the skill workflow: the offline unit tests in `tests/unit/` and `docs/defect-write-up.md`.
 
 The skills are identical to the ones in the Restful-Booker repo. Only the agent's project config differs. That's the point: one workflow, applied unchanged to a second and very different API.
 
@@ -150,6 +156,8 @@ The skills are identical to the ones in the Restful-Booker repo. Only the agent'
 | `context/api-auth.md` | How Bearer JWT auth works here, and every negative-auth state |
 | `context/test-case-matrix.md` | The 75-case inventory the suite was generated from |
 | `context/schema-validation-report.md` | Findings from running the suite live, including the defects |
-| `src/`, `tests/` | The framework and test suite |
+| `docs/test-report.md` | Test report from a full local run: counts by feature, the defect xfails, every test's steps |
+| `docs/defect-write-up.md` | Defect 1 written up as a bug report |
+| `src/`, `tests/` | The framework and test suite (`tests/unit/`: offline tests of the framework itself) |
 | `config/config.yaml` | Environment config (one real environment: the public instance) |
 | `skills/`, `agents/` | The reusable AI skill workflow, and the agent with this project's config |

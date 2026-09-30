@@ -31,49 +31,55 @@ class AssertHelper:
 
     @staticmethod
     def assert_status_code(response, expected: int):
-        assert response.status_code == expected, (
-            f"Expected status {expected}, got {response.status_code}. Body: {safe_body(response)}"
-        )
+        if not (response.status_code == expected):
+            raise AssertionError(f"Expected status {expected}, got {response.status_code}. Body: {safe_body(response)}")
 
     @staticmethod
     def assert_content_type(response, expected_substring: str = "application/json"):
         content_type = response.headers.get("Content-Type", "")
-        assert expected_substring in content_type, (
-            f"Expected Content-Type containing '{expected_substring}', got '{content_type}'"
-        )
+        if expected_substring not in content_type:
+            raise AssertionError(f"Expected Content-Type containing '{expected_substring}', got '{content_type}'")
 
     @staticmethod
     def assert_equals(actual, expected, context: str = ""):
-        assert actual == expected, f"Expected {context}{expected!r}, got {actual!r}"
+        if not (actual == expected):
+            raise AssertionError(f"Expected {context}{expected!r}, got {actual!r}")
 
     @staticmethod
     def assert_not_equal(actual, unexpected, context: str = ""):
-        assert actual != unexpected, f"Expected {context}to differ from {unexpected!r}, both were {actual!r}"
+        if not (actual != unexpected):
+            raise AssertionError(f"Expected {context}to differ from {unexpected!r}, both were {actual!r}")
 
     @staticmethod
     def assert_is_instance(value, expected_type, context: str = ""):
-        assert isinstance(value, expected_type), (
-            f"Expected {context}to be of type {expected_type.__name__}, got {type(value).__name__} ({value!r})"
-        )
+        if not isinstance(value, expected_type):
+            raise AssertionError(
+                f"Expected {context}to be of type {expected_type.__name__}, got {type(value).__name__} ({value!r})"
+            )
 
     @staticmethod
     def assert_field_equals(body: dict, field: str, expected, path: str = ""):
         actual = body.get(field)
-        assert actual == expected, f"Expected {path}{field}={expected!r}, got {actual!r}. Full body: {redact(body)}"
+        if not (actual == expected):
+            raise AssertionError(f"Expected {path}{field}={expected!r}, got {actual!r}. Full body: {redact(body)}")
 
     @staticmethod
     def assert_field_absent(body: dict, field: str, path: str = ""):
         # The value is never echoed: this check exists to catch leaked secrets and personal data.
-        assert field not in body, f"Expected field {path}{field} to be absent, but it is present (value withheld)"
+        if field in body:
+            raise AssertionError(f"Expected field {path}{field} to be absent, but it is present (value withheld)")
 
     @staticmethod
     def assert_contains(haystack, needle, context: str = ""):
-        assert needle in haystack, f"Expected {context}to contain {needle!r}, got {haystack!r}"
+        if needle not in haystack:
+            raise AssertionError(f"Expected {context}to contain {needle!r}, got {haystack!r}")
 
     @staticmethod
     def assert_greater(actual, threshold, context: str = ""):
-        assert actual > threshold, f"Expected {context}to be greater than {threshold!r}, got {actual!r}"
+        if not (actual > threshold):
+            raise AssertionError(f"Expected {context}to be greater than {threshold!r}, got {actual!r}")
 
     @staticmethod
     def assert_greater_or_equal(actual, threshold, context: str = ""):
-        assert actual >= threshold, f"Expected {context}to be at least {threshold!r}, got {actual!r}"
+        if not (actual >= threshold):
+            raise AssertionError(f"Expected {context}to be at least {threshold!r}, got {actual!r}")

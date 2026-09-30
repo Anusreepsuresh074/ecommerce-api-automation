@@ -1,8 +1,9 @@
 name: CI
 
 # Built by ci-integration from create-framework-structure's minimal stub.
-#   Pull request / push to main -> lint, then the smoke subset against dev (the PR gate).
-#   Nightly 02:30 UTC / manual  -> lint, then the full regression suite against dev.
+#   Pull request / push to main -> lint + offline unit tests, then the smoke subset against dev (the PR gate).
+#   Nightly 02:30 UTC / manual  -> lint + offline unit tests, then the full regression suite against dev,
+#                                  then the Allure report on GitHub Pages.
 # dev is the only environment in config/config.yaml. Failures are reported by GitHub itself (failed
 # check + email, JUnit summary, run-page summary) — no external notification channel.
 #
@@ -32,7 +33,7 @@ env:
 
 jobs:
   lint:
-    name: Lint
+    name: Lint + unit tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -43,6 +44,9 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - run: ruff check .
       - run: ruff format --check .
+      # Offline tests of the framework itself (redaction, JWT utils, report steps, assertions). No
+      # network and no secrets; kept out of the API runs below by testpaths in pytest.ini.
+      - run: pytest tests/unit
 
   tests:
     name: ${{ matrix.scope == 'smoke' && 'Smoke suite (PR gate)' || 'Full regression suite' }}
@@ -143,11 +147,12 @@ jobs:
           retention-days: 14
 
   # Builds the Allure report with run-over-run trend history and publishes it to GitHub Pages
-  # (gh-pages branch). Skipped for pull requests.
+  # (gh-pages branch). Only for the full regression runs (nightly / manual): a push runs just the
+  # smoke subset, and publishing that would replace the full report (with its defect xfails).
   # One-time repo setup: Settings -> Pages -> Deploy from branch -> gh-pages.
   allure-report:
     needs: tests
-    if: always() && github.event_name != 'pull_request'
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     permissions:
       contents: write
