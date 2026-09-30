@@ -1,4 +1,0 @@
-INFO     src.core.api_base:api_base.py:39 POST https://dummyjson.com/products/add | params=None | headers=None | json={'title': 'QA Test Product 77e68795', 'description': 'Created by an automated API test.', 'price': 49.99, 'category': 'smartphones', 'brand': 'QA Brand', 'stock': 10}
-INFO     src.core.api_base:api_base.py:45 -> 201 {"id": 195, "title": "QA Test Product 77e68795", "price": 49.99, "stock": 10, "description": "Created by an automated API test.", "brand": "QA Brand", "category": "smartphones"}
-INFO     src.core.api_base:api_base.py:39 GET https://dummyjson.com/products/195 | params=None | headers=None | json=None
-INFO     src.core.api_base:api_base.py:45 -> 404 {"message": "Product with id '195' not found"}
