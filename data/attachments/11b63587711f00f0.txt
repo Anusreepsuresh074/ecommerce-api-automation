@@ -1,0 +1,2 @@
+2026-10-01 09:14:21,146 | INFO | src.core.api_base | GET https://dummyjson.com/products | params={'limit': 5, 'select': 'title,price'} | headers=None | json=None
+2026-10-01 09:14:21,193 | INFO | src.core.api_base | -> 200 {"products": [{"id": 1, "title": "Essence Mascara Lash Princess", "price": 9.99}, {"id": 2, "title": "Eyeshadow Palette with Mirror", "price": 19.99}, {"id": 3, "title": "Powder Canister", "price": 14.99}, {"id": 4, "title": "Red Lipstick", "price": 12.99}, {"id": 5, "title": "Red Nail Polish", "price": 8.99}], "total": 194, "skip": 0, "limit": 5}

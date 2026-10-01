@@ -1,0 +1,2 @@
+2026-10-01 09:15:25,225 | INFO | src.core.api_base | GET https://dummyjson.com/auth/me | params=None | headers={'Authorization': '***'} | json=None
+2026-10-01 09:15:25,263 | INFO | src.core.api_base | -> 500 {"message": "invalid signature"}

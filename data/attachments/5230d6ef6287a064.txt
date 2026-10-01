@@ -1,0 +1,2 @@
+2026-10-01 09:14:20,748 | INFO | src.core.api_base | POST https://dummyjson.com/auth/login | params=None | headers=None | json={'username': 'emilys'}
+2026-10-01 09:14:20,787 | INFO | src.core.api_base | -> 400 {"message": "Username and password required"}
