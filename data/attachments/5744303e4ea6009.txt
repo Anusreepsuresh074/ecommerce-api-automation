@@ -1,0 +1,2 @@
+2026-10-04 08:38:42,739 | INFO | src.core.api_base | GET https://dummyjson.com/products/abc | params=None | headers=None | json=None
+2026-10-04 08:38:42,826 | INFO | src.core.api_base | -> 404 {"message": "Product with id 'abc' not found"}
