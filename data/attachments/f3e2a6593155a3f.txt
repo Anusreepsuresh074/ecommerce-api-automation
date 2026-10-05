@@ -1,0 +1,4 @@
+POST https://dummyjson.com/auth/products/add
+params=None
+headers={'Authorization': '***'}
+json={'title': 'QA Test Product c18ba94a', 'description': 'Created by an automated API test.', 'price': 49.99, 'category': 'smartphones', 'brand': 'QA Brand', 'stock': 10}
