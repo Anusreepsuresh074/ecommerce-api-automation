@@ -1,2 +1,0 @@
-2026-10-05 09:24:54,871 | INFO | src.core.api_base | POST https://dummyjson.com/auth/login | params=None | headers=None | json={'username': 'emilys', 'password': '***', 'expiresInMins': 1}
-2026-10-05 09:24:55,032 | INFO | src.core.api_base | -> 200 {"accessToken": "***", "refreshToken": "***", "id": 1, "username": "emilys", "email": "emily.johnson@x.dummyjson.com", "firstName": "Emily", "lastName": "Johnson", "gender": "female", "image": "https://dummyjson.com/icon/emilys/128"}

@@ -1,2 +1,0 @@
-2026-10-05 09:24:55,931 | INFO | src.core.api_base | POST https://dummyjson.com/auth/login | params=None | headers=None | json={'username': 'qa_no_such_user', 'password': '***'}
-2026-10-05 09:24:56,091 | INFO | src.core.api_base | -> 400 {"message": "Invalid credentials"}
