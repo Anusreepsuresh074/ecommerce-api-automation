@@ -1,0 +1,2 @@
+2026-10-07 09:01:57,778 | INFO | src.core.api_base | GET https://dummyjson.com/products | params={'limit': 'abc'} | headers=None | json=None
+2026-10-07 09:01:57,895 | INFO | src.core.api_base | -> 400 {"message": "Invalid 'limit' - should be a positive number"}
