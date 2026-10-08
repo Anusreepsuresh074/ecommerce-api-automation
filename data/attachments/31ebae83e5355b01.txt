@@ -1,0 +1,2 @@
+2026-10-08 09:18:13,845 | INFO | src.core.api_base | GET https://dummyjson.com/products | params={'modifiedAfter': 'not-a-date'} | headers=None | json=None
+2026-10-08 09:18:13,854 | INFO | src.core.api_base | -> 400 {"message": "Invalid 'modifiedAfter' - should be a valid ISO 8601 date, e.g. 2025-01-01T00:00:00Z"}

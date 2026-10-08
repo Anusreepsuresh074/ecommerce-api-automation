@@ -1,2 +1,0 @@
-2026-10-07 09:02:00,117 | INFO | src.core.api_base | PATCH https://dummyjson.com/products/99999 | params=None | headers=None | json={'title': 'x'}
-2026-10-07 09:02:00,226 | INFO | src.core.api_base | -> 404 {"message": "Product with id '99999' not found"}
