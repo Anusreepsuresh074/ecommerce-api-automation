@@ -1,0 +1,2 @@
+2026-10-09 09:25:23,028 | INFO | src.core.api_base | POST https://dummyjson.com/products/add | params=None | headers=None | json={'title': 'QA Test Product 7253bf26', 'description': 'Created by an automated API test.', 'price': 'free', 'category': 'smartphones', 'brand': 'QA Brand', 'stock': 10}
+2026-10-09 09:25:23,108 | INFO | src.core.api_base | -> 201 {"id": 195, "title": "QA Test Product 7253bf26", "price": "free", "stock": 10, "description": "Created by an automated API test.", "brand": "QA Brand", "category": "smartphones"}
