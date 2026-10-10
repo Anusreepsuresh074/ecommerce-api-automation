@@ -1,2 +1,0 @@
-2026-10-09 09:25:21,360 | INFO | src.core.api_base | GET https://dummyjson.com/products | params={'sortBy': 'price', 'order': 'sideways'} | headers=None | json=None
-2026-10-09 09:25:21,443 | INFO | src.core.api_base | -> 400 {"message": "Invalid 'order' - should be either 'asc' or 'desc'"}
