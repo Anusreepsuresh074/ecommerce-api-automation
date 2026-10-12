@@ -1,0 +1,2 @@
+2026-10-12 09:33:15,585 | INFO | src.core.api_base | GET https://dummyjson.com/products | params={'skip': -1} | headers=None | json=None
+2026-10-12 09:33:15,601 | INFO | src.core.api_base | -> 400 {"message": "Invalid 'skip' - should be a positive number"}
