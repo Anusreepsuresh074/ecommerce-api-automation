@@ -1,0 +1,4 @@
+2026-10-16 07:25:08,175 | INFO | src.core.api_base | POST https://dummyjson.com/products/add | params=None | headers=None | json={'title': 'QA Test Product 5ea79739', 'description': 'Created by an automated API test.', 'price': 49.99, 'category': 'smartphones', 'brand': 'QA Brand', 'stock': 10}
+2026-10-16 07:25:08,187 | INFO | src.core.api_base | -> 201 {"id": 195, "title": "QA Test Product 5ea79739", "price": 49.99, "stock": 10, "description": "Created by an automated API test.", "brand": "QA Brand", "category": "smartphones"}
+2026-10-16 07:25:08,202 | INFO | src.core.api_base | GET https://dummyjson.com/products/195 | params=None | headers=None | json=None
+2026-10-16 07:25:08,214 | INFO | src.core.api_base | -> 404 {"message": "Product with id '195' not found"}
