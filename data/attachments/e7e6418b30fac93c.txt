@@ -1,2 +1,0 @@
-2026-10-16 07:25:07,940 | INFO | src.core.api_base | GET https://dummyjson.com/products/category/no-such-category | params=None | headers=None | json=None
-2026-10-16 07:25:07,952 | INFO | src.core.api_base | -> 200 {"products": [], "total": 0, "skip": 0, "limit": 0}
