@@ -1,2 +1,0 @@
-status_code=201
-{"id": 195, "title": "QA Test Product 10e7e7d8", "price": "free", "stock": 10, "description": "Created by an automated API test.", "brand": "QA Brand", "category": "smartphones"}
