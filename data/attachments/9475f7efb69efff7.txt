@@ -1,4 +1,0 @@
-2026-10-30 08:50:49,247 | INFO | src.core.api_base | POST https://dummyjson.com/auth/refresh | params=None | headers=None | json={'refreshToken': '***'}
-2026-10-30 08:50:49,302 | INFO | src.core.api_base | -> 403 {"message": "Invalid refresh token"}
-2026-10-30 08:50:49,304 | INFO | src.core.api_base | POST https://dummyjson.com/auth/refresh | params=None | headers=None | json={}
-2026-10-30 08:50:49,353 | INFO | src.core.api_base | -> 401 {"message": "Refresh token required"}
