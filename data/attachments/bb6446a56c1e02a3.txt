@@ -1,0 +1,2 @@
+2026-11-01 09:29:49,136 | INFO | src.core.api_base | DELETE https://dummyjson.com/products/99999 | params=None | headers=None | json=None
+2026-11-01 09:29:49,328 | INFO | src.core.api_base | -> 404 {"message": "Product with id '99999' not found"}
