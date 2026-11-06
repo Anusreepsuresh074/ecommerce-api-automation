@@ -1,0 +1,2 @@
+2026-11-06 09:38:59,815 | INFO | src.core.api_base | GET https://dummyjson.com/auth/me | params=None | headers=None | json=None
+2026-11-06 09:39:00,000 | INFO | src.core.api_base | -> 401 {"message": "Access Token is required"}
