@@ -1,2 +1,0 @@
-2026-11-08 09:18:44,945 | INFO | src.core.api_base | POST https://dummyjson.com/auth/login | params=None | headers=None | json={'username': 'emilys', 'password': '***', 'expiresInMins': 43201}
-2026-11-08 09:18:45,018 | INFO | src.core.api_base | -> 500 {"message": "Maximum access token expire time can be 43200 minutes"}
