@@ -1,6 +1,0 @@
-2026-11-09 10:02:31,986 | INFO | src.core.api_base | POST https://dummyjson.com/auth/login | params=None | headers=None | json={'username': 'emilys', 'password': '***'}
-2026-11-09 10:02:32,259 | INFO | src.core.api_base | -> 200 {"accessToken": "***", "refreshToken": "***", "id": 1, "username": "emilys", "email": "emily.johnson@x.dummyjson.com", "firstName": "Emily", "lastName": "Johnson", "gender": "female", "image": "https://dummyjson.com/icon/emilys/128"}
-2026-11-09 10:02:32,262 | INFO | src.core.api_base | POST https://dummyjson.com/auth/refresh | params=None | headers=None | json={'refreshToken': '***'}
-2026-11-09 10:02:32,507 | INFO | src.core.api_base | -> 200 {"accessToken": "***", "refreshToken": "***"}
-2026-11-09 10:02:32,508 | INFO | src.core.api_base | POST https://dummyjson.com/auth/refresh | params=None | headers=None | json={'refreshToken': '***'}
-2026-11-09 10:02:32,764 | INFO | src.core.api_base | -> 200 {"accessToken": "***", "refreshToken": "***"}
