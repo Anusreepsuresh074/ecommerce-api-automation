@@ -1,2 +1,0 @@
-2026-11-10 10:12:41,337 | INFO | src.core.api_base | POST https://dummyjson.com/products/add | params=None | headers=None | json={}
-2026-11-10 10:12:41,427 | INFO | src.core.api_base | -> 201 {"id": 195}

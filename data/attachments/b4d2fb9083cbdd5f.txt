@@ -1,2 +1,0 @@
-2026-11-10 10:13:43,522 | INFO | src.core.api_base | GET https://dummyjson.com/auth/me | params=None | headers={'Authorization': '***'} | json=None
-2026-11-10 10:13:44,107 | INFO | src.core.api_base | -> 500 {"message": "invalid token"}
