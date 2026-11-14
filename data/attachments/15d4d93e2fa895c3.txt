@@ -1,0 +1,6 @@
+2026-11-14 09:13:24,394 | INFO | src.core.api_base | POST https://dummyjson.com/auth/products/add | params=None | headers=None | json={'title': 'QA Test Product 74c3d766', 'description': 'Created by an automated API test.', 'price': 49.99, 'category': 'smartphones', 'brand': 'QA Brand', 'stock': 10}
+2026-11-14 09:13:24,580 | INFO | src.core.api_base | -> 401 {"message": "Access Token is required"}
+2026-11-14 09:13:24,582 | INFO | src.core.api_base | POST https://dummyjson.com/auth/products/add | params=None | headers={'Authorization': '***'} | json={'title': 'QA Test Product dab77ae9', 'description': 'Created by an automated API test.', 'price': 49.99, 'category': 'smartphones', 'brand': 'QA Brand', 'stock': 10}
+2026-11-14 09:13:24,766 | INFO | src.core.api_base | -> 201 {"id": 195, "title": "QA Test Product dab77ae9", "price": 49.99, "stock": 10, "description": "Created by an automated API test.", "brand": "QA Brand", "category": "smartphones"}
+2026-11-14 09:13:24,775 | INFO | src.core.api_base | GET https://dummyjson.com/products/195 | params=None | headers=None | json=None
+2026-11-14 09:13:24,959 | INFO | src.core.api_base | -> 404 {"message": "Product with id '195' not found"}
