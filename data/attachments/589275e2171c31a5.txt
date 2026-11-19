@@ -1,0 +1,2 @@
+status_code=429
+{"message": "request limit exceeded, please wait a few seconds"}

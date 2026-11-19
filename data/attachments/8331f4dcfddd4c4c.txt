@@ -1,4 +1,0 @@
-GET https://dummyjson.com/products/category/smartphones
-params={'limit': 0, 'select': 'meta', 'modifiedAfter': '2026-05-17T12:09:29.350Z'}
-headers=None
-json=None

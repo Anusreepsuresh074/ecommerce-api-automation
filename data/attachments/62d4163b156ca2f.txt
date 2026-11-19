@@ -1,4 +1,0 @@
-GET https://dummyjson.com/auth/products
-params={'limit': 3}
-headers={'Authorization': '***'}
-json=None

@@ -1,4 +1,0 @@
-PUT https://dummyjson.com/auth/products/1
-params=None
-headers={'Authorization': '***'}
-json={'title': 'QA Protected'}
