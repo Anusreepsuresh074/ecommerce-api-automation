@@ -1,2 +1,0 @@
-2026-11-19 10:35:37,071 | INFO | src.core.api_base | GET https://dummyjson.com/products/category/smartphones | params={'limit': 0, 'select': 'meta'} | headers=None | json=None
-2026-11-19 10:35:37,212 | INFO | src.core.api_base | -> 429 {"message": "request limit exceeded, please wait a few seconds"}
