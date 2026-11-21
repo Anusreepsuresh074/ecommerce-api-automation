@@ -1,0 +1,2 @@
+2026-11-21 10:01:24,905 | INFO | src.core.api_base | POST https://dummyjson.com/auth/refresh | params=None | headers=None | json={'refreshToken': '***', 'expiresInMins': 5}
+2026-11-21 10:01:24,917 | INFO | src.core.api_base | -> 200 {"accessToken": "***", "refreshToken": "***"}
