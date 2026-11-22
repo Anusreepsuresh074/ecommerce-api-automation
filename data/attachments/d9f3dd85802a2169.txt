@@ -1,2 +1,0 @@
-2026-11-21 10:01:25,801 | INFO | src.core.api_base | PUT https://dummyjson.com/products/99999 | params=None | headers=None | json={'title': 'x'}
-2026-11-21 10:01:25,810 | INFO | src.core.api_base | -> 404 {"message": "Product with id '99999' not found"}
