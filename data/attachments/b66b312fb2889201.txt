@@ -1,0 +1,2 @@
+2026-11-25 11:33:18,500 | INFO | src.core.api_base | GET https://dummyjson.com/products/search | params={'q': 'qa-zzqqxx-no-such-product'} | headers=None | json=None
+2026-11-25 11:33:18,549 | INFO | src.core.api_base | -> 200 {"products": [], "total": 0, "skip": 0, "limit": 0}
