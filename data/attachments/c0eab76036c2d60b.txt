@@ -1,0 +1,6 @@
+2026-11-26 11:15:45,565 | INFO | src.core.api_base | GET https://dummyjson.com/products | params={'limit': 'abc'} | headers=None | json=None
+2026-11-26 11:15:45,709 | INFO | src.core.api_base | -> 400 {"message": "Invalid 'limit' - should be a positive number"}
+2026-11-26 11:15:45,710 | INFO | src.core.api_base | GET https://dummyjson.com/products | params={'sortBy': 'price', 'order': 'sideways'} | headers=None | json=None
+2026-11-26 11:15:45,854 | INFO | src.core.api_base | -> 400 {"message": "Invalid 'order' - should be either 'asc' or 'desc'"}
+2026-11-26 11:15:45,855 | INFO | src.core.api_base | GET https://dummyjson.com/products | params={'modifiedAfter': 'not-a-date'} | headers=None | json=None
+2026-11-26 11:15:46,000 | INFO | src.core.api_base | -> 400 {"message": "Invalid 'modifiedAfter' - should be a valid ISO 8601 date, e.g. 2025-01-01T00:00:00Z"}
